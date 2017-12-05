@@ -1,21 +1,43 @@
-# Openannuaire
+# Français
 
-This application lists all the French companies. 
+## Sommaire
 
-She was realized with the api [FirmAPI](https://firmapi.com/) and the techno [Angular 5](https://angular.io/).
+* [Installation](#installation)
+* [Description](#description)
+    * [Fonctionnelle](#fonctionnelle)
+    * [Technique](#technique)
+* [Collaborateurs](#collaborateurs)
 
-## Development server
+### Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change 
-any of the source files.
+Les étapes à faire pour installer le projet
 
-## Workflow Git
+* `git clone git@github.com:DufourVictor/openannuaire.git 'dossier'`
+* Une fois le projet récupéré, allez dans celui-ci depuis votre cmd grâce à la commande `cd 'dossier'`
+puis éxecuter ces commandes
+* `npm install`
+* `ng serve`
+* Rendez-vous maintenant sur votre navigateur et tapez dans l'url
+* `http://localhost:4200/`
+* Votre projet est installé et lancé !
 
-**Branches**
+### Description
+##### Fonctionnelle
+Le projet consiste à récupérer, depuis un service, des informations
+sur toutes les entreprises françaises. Suite à ça, l'application
+liste ces entreprises et il est possible d'appliquer des filtres
+pour afficher seulement certaines entreprises. Il est également 
+possible d'exporter la liste d'entreprises pour la conserver.
 
-* _master :_ This branch contains only committed initial, the major versions of the application, and the ended application.
-* _develop :_ All the developments are made on a branch which leaves this one. She contains all the evolutions of the application.
-* _feat/... :_ It is a question of bland used to identify that the development involves a feature. 
-**Example: feat/sortable_grid** mean that the development concerns the sortings of the grid
-* _fix/... :_ It is a question of bland used to identify that the development involves a fix. 
-**Example: fix/edit_translations** means a modification on the translations.
+##### Technique
+Ce projet a été réalisé en groupe, avec la technologie 
+[Angular 5](https://angular.io/) et l'API [FirmApi](https://firmapi.com/)
+(gratuite et libre d'utilisation).
+
+### Collaborateurs
+Ci-dessous, la liste des développeurs ayant participé au développement
+de ce projet :
+* [BORDAS Maxime](https://github.com/MaximeBordas)
+* [BOURGEOIS Lucas](https://github.com/CharlesHaller)
+* [HALLER Charles](https://github.com/LucasBourgeois)
+* [DUFOUR Victor](https://github.com/DufourVictor)
