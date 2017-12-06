@@ -4,8 +4,8 @@
 
 * [Installation](#installation)
 * [Description](#description)
-    * [Functional description](#Functional-description)
-    * [Technical description](#Technical-description)
+    * [Functional description](#functional-description)
+    * [Technical description](#technical-description)
 * [Collaborators](#collaborators)
 
 ### Installation
