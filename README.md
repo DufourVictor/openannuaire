@@ -4,8 +4,8 @@
 
 * [Installation](#installation)
 * [Description](#description)
-    * [Functional](#Functional-despcription)
-    * [Technical](#Technical-description)
+    * [Functional description](#Functional-description)
+    * [Technical description](#Technical-description)
 * [Collaborators](#collaborators)
 
 ### Installation
@@ -26,7 +26,7 @@ This project gather data from a service. All of the date come from all
 of the French companies.
 With this the application list all of the companies, you can apply some 
 filters to sharpen the results.
-It's also possible to export the list of the companies to save it
+It's also possible to export the list of the companies to save it.
 
 ##### Technical description
 This project had been done in group, with the technology
