@@ -36,8 +36,8 @@ This project had been done in group, with the technology
 ### Collaborators
 Down here , the list of the developers who have worked on this project : 
 * [BORDAS Maxime](https://github.com/MaximeBordas)
-* [BOURGEOIS Lucas](https://github.com/CharlesHaller)
-* [HALLER Charles](https://github.com/LucasBourgeois)
+* [BOURGEOIS Lucas](https://github.com/LucasBourgeois)
+* [HALLER Charles](https://github.com/CharlesHaller)
 * [DUFOUR Victor](https://github.com/DufourVictor)
 
 # Français
@@ -80,6 +80,6 @@ Ce projet a été réalisé en groupe, avec la technologie
 Ci-dessous, la liste des développeurs ayant participé au développement
 de ce projet :
 * [BORDAS Maxime](https://github.com/MaximeBordas)
-* [BOURGEOIS Lucas](https://github.com/CharlesHaller)
-* [HALLER Charles](https://github.com/LucasBourgeois)
+* [BOURGEOIS Lucas](https://github.com/LucasBourgeois)
+* [HALLER Charles](https://github.com/CharlesHaller)
 * [DUFOUR Victor](https://github.com/DufourVictor)
