@@ -15,7 +15,7 @@ export class ListCompaniesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.retrieveCompaniesService.getCompanies().subscribe(data => {
+        this.retrieveCompaniesService.getCompanies(null).subscribe(data => {
             this.companies = data.companies as CompanyInterface[];
         });
     }
