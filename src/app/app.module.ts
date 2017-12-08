@@ -2,8 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import { ListCompaniesComponent } from './list-companies/list-companies.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule, MatPaginatorModule} from '@angular/material';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
     declarations: [
@@ -13,7 +16,11 @@ import { ListCompaniesComponent } from './list-companies/list-companies.componen
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        HttpModule,
+        HttpClientModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

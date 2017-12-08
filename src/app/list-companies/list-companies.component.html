@@ -1,0 +1,33 @@
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="siren">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Identifiant de l'entreprise</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.siren}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nom de l'entreprise</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.names.best}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Adresse</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.address}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="postal_code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Code postal</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.postal_code}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Ville</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.city}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>
