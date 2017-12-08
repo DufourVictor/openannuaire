@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+}
+
+@Component({
+    selector: 'app-checkboxe',
+    templateUrl: './app.component.html',
+})
+export class CheckboxComponent {
 }
