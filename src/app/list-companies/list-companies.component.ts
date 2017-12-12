@@ -22,7 +22,7 @@ export class ListCompaniesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.retrieveCompaniesService.getCompanies(null).subscribe(data => {
+        this.retrieveCompaniesService.getCompanies().subscribe(data => {
             this.companies = data.companies as CompanyInterface[];
             this.dataSource = new MatTableDataSource<CompanyInterface>(this.companies);
             this.dataSource.sort = this.sort;
