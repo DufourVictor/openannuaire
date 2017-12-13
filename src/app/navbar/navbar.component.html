@@ -1,0 +1,18 @@
+<mat-toolbar role="header" class="navbar">
+  <mat-toolbar-row class="grey">
+   <img [src]="pathToImg" alt="">
+    <input matInput type="text" placeholder="Clearable input" [(ngModel)]="value"/>
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="darker-grey">
+    (count sur les entreprise) entrprises (date) tableau cartes export de données
+    <mat-tab-group>
+      <mat-tab label="Tableau"></mat-tab>
+      <mat-tab label="Carte"></mat-tab>
+      <mat-tab label="Export "></mat-tab>
+    </mat-tab-group>
+  </mat-toolbar-row>
+</mat-toolbar>
+

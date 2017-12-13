@@ -2,10 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { ListCompaniesComponent } from './list-companies/list-companies.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { ListCompaniesComponent } from './list-companies/list-companies.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './/app-routing.module';
 import {
     MatAutocompleteModule,
@@ -43,14 +44,16 @@ import {
 
 
 
+
+
 @NgModule({
-  declarations: [
+      declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
     ListCompaniesComponent,
   ],
-  imports: [
+    imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -89,8 +92,10 @@ import {
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
+
+  
 
 })
 export class AppModule {
