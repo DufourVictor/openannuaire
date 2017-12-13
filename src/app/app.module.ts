@@ -2,7 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { ListCompaniesComponent } from './list-companies/list-companies.component';
+import {HttpClientModule} from '@angular/common/http';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AppRoutingModule } from './/app-routing.module';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -36,14 +40,15 @@ import {
     MatTooltipModule,
     MatStepperModule,
 } from '@angular/material';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    NavbarComponent,
+    SidebarComponent,
+    ListCompaniesComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,8 +86,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
-export class AppModule { }
+export class AppModule {
+}
