@@ -1,0 +1,118 @@
+@import '../../sass/variables';
+
+.sidebar-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-family: $main-font-family;
+    .sidebar{
+        width: 350px;
+        height: 100%;
+        background-color: $first-grey;
+        &-header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            padding: 0 20px 0 26px;
+            border-bottom: 2px solid $second-grey;
+            .sidebar-filter-result{
+                font-size: 1.5rem;
+                color: $main-font-color;
+                font-weight: 300;
+                .result-count{
+                    font-size: 2rem;
+                    font-weight: 700;
+                }
+            }
+        }
+        &-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: calc(100% - 72px);
+            color: $second-font-color;
+            .sidebar-categ{
+                padding: 10px 20px 10px 20px;
+                border-bottom: 2px solid $second-grey;
+                flex: 1 1 auto;
+                &-title {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-weight: 700;
+                    i{
+                        margin-right: 5px;
+                    }
+                }
+                &-desc{
+                    padding: 10px 20px 10px 20px;
+                    flex: 0 0 10%;
+                }
+            }
+            .categ{
+                &-activity{
+                    border-left: 6px solid $first-gradient;
+                    &-button{
+                        color: $first-gradient
+                    }
+                }
+                &-company-type {
+                    border-left: 6px solid $second-gradient;
+                    &-button {
+                        color: $second-gradient;
+                    }
+                }
+                &-county {
+                    border-left: 6px solid $third-gradient;
+                    &-button {
+                        color: $third-gradient;
+                    }
+                }
+                &-city {
+                    border-left: 6px solid $fourth-gradient;
+                    &-button {
+                        color: $fourth-gradient;
+                    }
+                }
+                &-create {
+                    border-left: 6px solid $fifth-gradient;
+                    &-button {
+                        color: $fifth-gradient;
+                    }
+                }
+                &-legal {
+                    border-left: 6px solid $sixth-gradient;
+                    &-button {
+                        color: $sixth-gradient;
+                    }
+                }
+                &-effective {
+                    border-left: 6px solid $seventh-gradient;
+                    &-button {
+                        color: $seventh-gradient;
+                    }
+                }
+                &-sale {
+                    border-left: 6px solid $eigth-gradient;
+                    &-button {
+                        color: $eigth-gradient;
+                    }
+                }
+                &-region {
+                    border-left: 6px solid $nineth-gradient;
+                    &-button {
+                        color: $nineth-gradient;
+                    }
+                }
+            }
+
+        }
+    }
+    mat-sidenav-content{
+        background-color: $main;
+    }
+}
+
