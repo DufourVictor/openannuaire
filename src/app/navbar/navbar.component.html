@@ -1,17 +1,17 @@
 <mat-toolbar role="header" class="navbar">
-  <mat-toolbar-row class="row">
-   <img [src]="pathToImg" alt="openannuaire">
-    <input #search matInput type="text" placeholder="Clearable input" [(ngModel)]="filter" (keyup)="onFilter(search.value)" class="search"/>
-    <button mat-button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="onFilter('')">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-toolbar-row>
-  <mat-toolbar-row class="darker-grey">
-    (count sur les entreprise) entrprises (date) tableau cartes export de données
-    <nav mat-tab-nav-bar>
-      <a mat-tab-link routerLink="/" routerLinkActive="active" >Tableau</a>
-      <a mat-tab-link routerLink="/map" routerLinkActive="active" >Carte</a>
-    </nav>
-  </mat-toolbar-row>
+    <mat-toolbar-row class="row">
+        <img [src]="pathToImg" alt="openannuaire">
+        <input #search matInput type="text" placeholder="Clearable input" [(ngModel)]="filter"
+               (keyup)="onFilter(search.value)" class="search"/>
+        <button mat-button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="onFilter('')">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="row-second">
+        <div>(count sur les entreprise) entrprises (date) tableau cartes export de données</div>
+        <nav mat-tab-nav-bar>
+            <a mat-tab-link routerLink="/" routerLinkActive="active">Tableau</a>
+            <a mat-tab-link routerLink="/map" routerLinkActive="active">Carte</a>
+        </nav>
+    </mat-toolbar-row>
 </mat-toolbar>
-
