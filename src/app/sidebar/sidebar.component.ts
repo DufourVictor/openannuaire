@@ -11,4 +11,7 @@ export class SidebarComponent {
 
   addFilter($filter) {
   }
+
+  clearFilter() {
+  }
 }
