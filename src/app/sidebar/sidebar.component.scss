@@ -34,6 +34,7 @@
             justify-content: space-around;
             height: calc(100% - 72px);
             color: $second-font-color;
+
             .sidebar-categ{
                 padding: 10px 20px 10px 20px;
                 border-bottom: 2px solid $second-grey;
@@ -113,6 +114,9 @@
     }
     mat-sidenav-content{
         background-color: $main;
+        .mat-icon-button {
+            margin: 12px 0 12px 0;
+        }
     }
 }
 

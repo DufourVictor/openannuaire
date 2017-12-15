@@ -1,12 +1,19 @@
+@import '../../sass/variables';
+
 .navbar{
   position: absolute;
-}
-.grey{
-  background-color: #f3f3f3;
+  .row {
+    height: 64px;
+    background-color: $first-grey;
+    padding-left: 50px;
+    &-second {
+      background-color: $second-grey;
+      height: 50px;
+    }
+  }
 }
 
-.darker-grey{
-  background-color: #e1e1e1;
-  height: 5%;
-}
+
+
+
 

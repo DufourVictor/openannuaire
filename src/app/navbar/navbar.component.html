@@ -1,12 +1,12 @@
 <mat-toolbar role="header" class="navbar">
-  <mat-toolbar-row class="grey">
-   <img [src]="pathToImg" alt="">
+  <mat-toolbar-row class="row">
+   <img [src]="pathToImg" alt="openannuaire">
     <input matInput type="text" placeholder="Clearable input" [(ngModel)]="value"/>
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>
   </mat-toolbar-row>
-  <mat-toolbar-row class="darker-grey">
+  <mat-toolbar-row class="row-second">
     (count sur les entreprise) entrprises (date) tableau cartes export de données
     <mat-tab-group>
       <mat-tab label="Tableau"></mat-tab>
