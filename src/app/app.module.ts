@@ -8,6 +8,7 @@ import { ListCompaniesComponent } from './list-companies/list-companies.componen
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './/app-routing.module';
+import {AgmCoreModule} from '@agm/core';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -41,6 +42,7 @@ import {
     MatTooltipModule,
     MatStepperModule,
 } from '@angular/material';
+import { MapCompaniesComponent } from './map-companies/map-companies.component';
 
 
 
@@ -52,6 +54,7 @@ import {
     NavbarComponent,
     SidebarComponent,
     ListCompaniesComponent,
+    MapCompaniesComponent,
   ],
     imports: [
     BrowserModule,
@@ -91,6 +94,9 @@ import {
     MatStepperModule,
     AppRoutingModule,
     HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCUMXjVSSgh_WRBmIYFH2sWAYKc_8-Fwl4'
+    })
   ],
     providers: [],
     bootstrap: [AppComponent]
