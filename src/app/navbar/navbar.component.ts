@@ -11,7 +11,7 @@ export class NavbarComponent {
 
     filter;
 
-    public pathToImg = 'assets/img/Open-Annuaire.jpg';
+    public pathToImg = 'assets/img/Open-Annuaire.png';
 
     constructor() {
     }
