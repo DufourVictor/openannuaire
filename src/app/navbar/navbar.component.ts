@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
 
   value = 'Clear me';
 
-  public pathToImg = 'assets/img/Open-Annuaire.jpg';
+  public pathToImg = 'assets/img/Open-Annuaire.png';
 
   constructor() { }
 
