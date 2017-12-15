@@ -1,3 +1,19 @@
 <app-navbar parameter="name" (filters)="onFilter($event)"></app-navbar>
-<app-sidebar></app-sidebar>
-<app-list-companies [companies]="companies"></app-list-companies>
+
+<!-- Start SideNav -->
+<mat-sidenav-container class="sidebar-container">
+    <mat-sidenav #sidenav mode="side" opened="true" class="sidebar">
+        <app-sidebar>
+        </app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <i class="fas fa-bars fa-2x" aria-hidden="true"></i>
+        </button>
+        <!-- Rajouter le router outlet -->
+        <app-list-companies [companies]="companies"></app-list-companies>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- END SideNav -->
+
+

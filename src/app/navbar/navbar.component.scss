@@ -1,6 +1,16 @@
 @import '../../sass/variables';
 
 .navbar{
+  img{
+    margin-right: 50px;
+  }
+  .search {
+    width: 33%;
+    border: 1px solid black;
+    border-radius: 40px;
+    padding: 0 15px;
+    background: white;
+  }
   .row {
     height: 64px;
     background-color: $first-grey;

@@ -1,5 +1,3 @@
-<mat-sidenav-container class="sidebar-container">
-  <mat-sidenav #sidenav mode="side" opened="true" (opened)="events.push('open!')" (closed)="events.push('close!')" class="sidebar">
     <div class="sidebar-content">
       <div class="sidebar-categ categ-header">
         <div class="sidebar-categ-title">
@@ -12,7 +10,7 @@
       <div class="sidebar-categ categ-radie">
         <div class="sidebar-categ-title">
           <div><i class="fas fa-sitemap"></i> Radiation (Oui/Non)</div>
-          <button mat-icon-button class="categ-radie-button">
+          <button mat-icon-button (click)="addFilter()" class="categ-radie-button">
             <i class="fas fa-plus-circle" aria-hidden="true"></i>
           </button>
         </div>
@@ -23,7 +21,7 @@
       <div class="sidebar-categ categ-county">
         <div class="sidebar-categ-title">
           <div><i class="far fa-map"></i> Département</div>
-          <button mat-icon-button class="categ-county-button">
+          <button mat-icon-button (click)="addFilter()" class="categ-county-button">
             <i class="fas fa-plus-circle" aria-hidden="true"></i>
           </button>
         </div>
@@ -34,7 +32,7 @@
       <div class="sidebar-categ categ-legal">
         <div class="sidebar-categ-title">
           <div><i class="fas fa-bookmark"></i> Statut juridique</div>
-          <button mat-icon-button class="categ-legal-button">
+          <button mat-icon-button (click)="addFilter()" class="categ-legal-button">
             <i class="fas fa-plus-circle" aria-hidden="true"></i>
           </button>
         </div>
@@ -45,7 +43,7 @@
       <div class="sidebar-categ categ-postal">
         <div class="sidebar-categ-title">
           <div><i class="fas fa-map"></i> Code Postal</div>
-          <button mat-icon-button class="categ-postal-button">
+          <button mat-icon-button (click)="addFilter()" class="categ-postal-button">
             <i class="fas fa-plus-circle" aria-hidden="true"></i>
           </button>
         </div>
@@ -57,11 +55,5 @@
         <p>Ajoutez et cumulez les critères de recherche pour affiner votre recherche :</p>
       </div>
   </div>
-  </mat-sidenav>
 
-  <mat-sidenav-content>
-    <button mat-icon-button (click)="sidenav.toggle()">
-      <i class="fas fa-bars fa-2x" aria-hidden="true"></i>
-    </button>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+
