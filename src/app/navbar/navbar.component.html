@@ -8,11 +8,10 @@
   </mat-toolbar-row>
   <mat-toolbar-row class="darker-grey">
     (count sur les entreprise) entrprises (date) tableau cartes export de données
-    <mat-tab-group>
-      <mat-tab label="Tableau"></mat-tab>
-      <mat-tab label="Carte"></mat-tab>
-      <mat-tab label="Export "></mat-tab>
-    </mat-tab-group>
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link routerLink="/" routerLinkActive="active" >Tableau</a>
+      <a mat-tab-link routerLink="/map" routerLinkActive="active" >Carte</a>
+    </nav>
   </mat-toolbar-row>
 </mat-toolbar>
 
