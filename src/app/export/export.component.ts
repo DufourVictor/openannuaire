@@ -21,22 +21,26 @@ export class ExportComponent {
 
     exportCompanies() {
         const arrayCompanies = [];
-        for (let i = 0; i < this.companies.length; i++) {
+        const head = ['Siren', 'Nom', 'Capitale', 'Forme juridique', 'Adresse', 'Code postal', 'Ville', 'Radié', 'Activité'];
+        const options = {
+            fieldSeparator: ';',
+            headers: head
+        };
+
+        for (const company of this.companies) {
             arrayCompanies.push(new Company(
-                this.companies[i].activity,
-                this.companies[i].address,
-                this.companies[i].capital,
-                this.companies[i].city,
-                this.companies[i].legal_form,
-                this.companies[i].names.best,
-                this.companies[i].postal_code,
-                this.companies[i].radie,
-                this.companies[i].siren,
+                company.siren,
+                company.names.best,
+                company.capital,
+                company.legal_form,
+                company.address,
+                company.postal_code,
+                company.city,
+                company.radie,
+                company.activity,
             ));
         }
 
-        new Angular2Csv(arrayCompanies, 'test');
-        // SUr chaque entreprise on instancie une nouvelle Company qu'on push dans un array
-        // On exporte l'array
+        new Angular2Csv(arrayCompanies, 'Export des entreprises - Openannuaire', options);
     }
 }
