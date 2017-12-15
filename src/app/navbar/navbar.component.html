@@ -6,13 +6,12 @@
       <mat-icon>close</mat-icon>
     </button>
   </mat-toolbar-row>
-  <mat-toolbar-row class="row-second">
-      <div>(count sur les entreprise) entrprises (date) tableau cartes export de données</div>
-    <mat-tab-group>
-      <mat-tab label="Tableau"></mat-tab>
-      <mat-tab label="Carte"></mat-tab>
-      <mat-tab label="Export"></mat-tab>
-    </mat-tab-group>
+  <mat-toolbar-row class="darker-grey">
+    (count sur les entreprise) entrprises (date) tableau cartes export de données
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link routerLink="/" routerLinkActive="active" >Tableau</a>
+      <a mat-tab-link routerLink="/map" routerLinkActive="active" >Carte</a>
+    </nav>
   </mat-toolbar-row>
 </mat-toolbar>
 
