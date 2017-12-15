@@ -7,41 +7,30 @@
         width: 350px;
         height: 100%;
         background-color: $first-grey;
-        &-header{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-            padding: 0 20px 0 26px;
-            border-bottom: 2px solid $second-grey;
-            .sidebar-filter-result{
-                font-size: 1.5rem;
-                color: $main-font-color;
-                font-weight: 300;
-                .result-count{
-                    font-size: 2rem;
-                    font-weight: 700;
-                }
-            }
-        }
+
         &-content{
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            height: calc(100% - 72px);
+            height: 100%;
             color: $second-font-color;
-
             .sidebar-categ{
                 padding: 10px 20px 10px 20px;
                 border-bottom: 2px solid $second-grey;
-                flex: 1 1 auto;
+                flex: 0 0 10%;
                 &-title {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     font-weight: 700;
+                    .result{
+                        color: $main-font-color;
+                    }
                     i{
                         margin-right: 5px;
+                    }
+                    .result-count {
+                        font-size: 2rem;
+                        font-weight: 700;
                     }
                 }
                 &-desc{
@@ -50,58 +39,33 @@
                 }
             }
             .categ{
-                &-activity{
+                &-header {
+                    &-button {
+                        color: $first-gradient
+                    }
+                }
+                &-radie{
                     border-left: 6px solid $first-gradient;
                     &-button{
                         color: $first-gradient
                     }
                 }
-                &-company-type {
+                &-county {
                     border-left: 6px solid $second-gradient;
                     &-button {
                         color: $second-gradient;
                     }
                 }
-                &-county {
+                &-legal {
                     border-left: 6px solid $third-gradient;
                     &-button {
                         color: $third-gradient;
                     }
                 }
-                &-city {
+                &-postal {
                     border-left: 6px solid $fourth-gradient;
                     &-button {
                         color: $fourth-gradient;
-                    }
-                }
-                &-create {
-                    border-left: 6px solid $fifth-gradient;
-                    &-button {
-                        color: $fifth-gradient;
-                    }
-                }
-                &-legal {
-                    border-left: 6px solid $sixth-gradient;
-                    &-button {
-                        color: $sixth-gradient;
-                    }
-                }
-                &-effective {
-                    border-left: 6px solid $seventh-gradient;
-                    &-button {
-                        color: $seventh-gradient;
-                    }
-                }
-                &-sale {
-                    border-left: 6px solid $eigth-gradient;
-                    &-button {
-                        color: $eigth-gradient;
-                    }
-                }
-                &-region {
-                    border-left: 6px solid $nineth-gradient;
-                    &-button {
-                        color: $nineth-gradient;
                     }
                 }
             }
