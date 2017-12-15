@@ -1,0 +1,12 @@
+@import '../../sass/variables';
+.navbar{
+  .row {
+    height: 64px;
+    background-color: $first-grey;
+    padding-left: 50px;
+    &-second {
+      background-color: $second-grey;
+      height: 50px;
+    }
+  }
+}
