@@ -1,19 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  value = 'Clear me';
+    value = 'Clear me';
 
-  public pathToImg = 'assets/img/Open-Annuaire.jpg';
+    @Input() parameter: string;
+    @Output() filters = new EventEmitter();
 
-  constructor() { }
+    filter;
 
-  ngOnInit() {
+    public pathToImg = 'assets/img/Open-Annuaire.jpg';
 
-  }
+    constructor() {
+    }
+
+    onFilter(filter: string) {
+        this.filter = filter;
+        this.filters.emit({
+            name: this.parameter,
+            filter: this.filter,
+        });
+    }
 }

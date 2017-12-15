@@ -1,2 +1,3 @@
-<app-navbar></app-navbar>
+<app-navbar parameter="name" (filters)="onFilter($event)"></app-navbar>
 <app-sidebar></app-sidebar>
+<app-list-companies [companies]="companies"></app-list-companies>
