@@ -1,19 +1,16 @@
-<app-navbar parameter="name" (filters)="onFilter($event)"></app-navbar>
+<app-navbar parameter="name"></app-navbar>
 
 <!-- Start SideNav -->
+<button mat-icon-button (click)="toggleSidebar()">
+    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+</button>
 <mat-sidenav-container class="sidebar-container">
-    <mat-sidenav #sidenav mode="side" opened="true" class="sidebar">
+    <mat-sidenav #sidenav mode="side" [opened]="toggle" class="sidebar">
         <app-sidebar>
         </app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <i class="fas fa-bars fa-2x" aria-hidden="true"></i>
-        </button>
-        <!-- Rajouter le router outlet -->
-        <app-list-companies [companies]="companies"></app-list-companies>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
 <!-- END SideNav -->
-
-<app-export [companies]="companies"></app-export>
