@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {RetrieveCompaniesService} from './retrieve-companies.service';
-import {CompanyInterface} from './company-interface';
 
 @Component({
     selector: 'app-root',
@@ -9,24 +8,16 @@ import {CompanyInterface} from './company-interface';
     providers: [RetrieveCompaniesService],
 })
 export class AppComponent implements OnInit {
-    companies: CompanyInterface[];
-    params = [];
+    toggle = true;
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
     }
 
-    getCompanies(): void {
-        this.retrieveCompaniesService.getCompanies(this.params).subscribe(data => {
-            this.companies = data.companies as CompanyInterface[];
-        });
-    }
-
     ngOnInit() {
-        this.getCompanies();
+        this.retrieveCompaniesService.getCompanies();
     }
 
-    onFilter(event) {
-        this.params[event.name] = event.filter;
-        this.getCompanies();
+    toggleSidebar() {
+        this.toggle = !this.toggle;
     }
 }

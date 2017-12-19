@@ -1,7 +1,8 @@
 <mat-toolbar role="header" class="navbar">
     <mat-toolbar-row class="row">
         <img [src]="pathToImg" alt="openannuaire">
-        <input #search matInput type="text" placeholder="Rechercher" [(ngModel)]="filter"(keyup)="onFilter(search.value)" class="search"/>
+        <input #search matInput type="text" placeholder="Nom de l'entreprise" (keyup)="onFilter(search.value)" class="search"/>
+
         <button mat-button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="onFilter('')">
             <mat-icon>close</mat-icon>
         </button>
@@ -10,8 +11,9 @@
     <mat-toolbar-row class="row-second">
         <div>(count sur les entreprise) entrprises (date) tableau cartes export de données</div>
         <nav mat-tab-nav-bar>
-            <a mat-tab-link routerLink="/" routerLinkActive="active">Tableau</a>
-            <a mat-tab-link routerLink="/map" routerLinkActive="active">Carte</a>
+            <a mat-tab-link routerLink="/">Tableau</a>
+            <a mat-tab-link routerLink="/map">Carte</a>
+            <a mat-tab-link routerLink="/export">Export</a>
         </nav>
     </mat-toolbar-row>
 </mat-toolbar>
