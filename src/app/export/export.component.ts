@@ -1,21 +1,24 @@
 import {Component, Input} from '@angular/core';
 
 import {Angular2Csv} from 'angular2-csv';
+import {RetrieveCompaniesService} from "../retrieve-companies.service";
 
 @Component({
     selector: 'app-export',
     templateUrl: './export.component.html',
     styleUrls: ['./export.component.scss']
 })
-export class ExportComponent {
+export class ExportComponent implements OnInit {
     companies: CompanyInterface[];
+    params = {};
 
-    constructor() {
+    constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
     }
 
-    @Input('companies')
-    set companiesParent(companies: CompanyInterface[]) {
-        this.companies = companies;
+    ngOnInit() {
+        this.retrieveCompaniesService.getCompanies(this.params).subscribe(data => {
+            this.companies = data.companies as CompanyInterface[];
+        });
     }
 
     exportCompanies() {
@@ -23,10 +26,10 @@ export class ExportComponent {
         const head = ['Siren', 'Nom', 'Capitale', 'Forme juridique', 'Adresse', 'Code postal', 'Ville', 'Radié', 'Activité'];
         const options = {
             fieldSeparator: ';',
-            headers: head
+            headers: head,
         };
 
-        for (const company of this.companies) {
+        this.companies.forEach(company => {
             arrayCompanies.push(new Company(
                 company.siren,
                 company.names.best,
@@ -38,7 +41,7 @@ export class ExportComponent {
                 company.radie,
                 company.activity,
             ));
-        }
+        })
 
         new Angular2Csv(arrayCompanies, 'Export des entreprises - Openannuaire', options);
     }
