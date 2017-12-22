@@ -7,25 +7,61 @@
       </button>
     </div>
   </div>
-  <div class="sidebar-categ categ-radie">
+  <div class="sidebar-categ categ-activity">
     <div class="sidebar-categ-title">
-      <div><i class="fas fa-sitemap"></i> Radiation (Oui/Non)</div>
-      <button mat-icon-button (click)="radiation.hidden = false"  class="categ-radie-button">
-        <i class="fas fa-plus-circle" aria-hidden="true"></i>
+      <div><i class="fas fa-sitemap"></i> Activité (code APE)</div>
+      <button id="addActivity" mat-icon-button (click)="showFilterControls(ape, 'addActivity', 'removeActivity')" class="categ-activity-button">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button id="removeActivity" mat-icon-button (click)="hideFilterControls(ape, 'addActivity', 'removeActivity')" class="categ-activity-button" style="display: none">
+        <i class="fas fa-minus-circle"></i>
       </button>
     </div>
     <div class="sidebar-categ-filter">
-      <mat-radio-group #radiation hidden="true" class="filter-radio">
-        <mat-radio-button value="true">Oui</mat-radio-button>
-        <mat-radio-button value="false">Non</mat-radio-button>
-      </mat-radio-group>
+      <form class="example-form" #ape hidden="true">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Rechercher">
+        </mat-form-field>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-activity-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="sidebar-categ categ-type">
+    <div class="sidebar-categ-title">
+      <div><i class="far fa-arrow-alt-circle-up"></i> Catégories d'entreprises</div>
+        <button id="addType" mat-icon-button (click)="showFilterControls(type, 'addType', 'removeType')" class="categ-type-button">
+          <i class="fas fa-plus-circle"></i>
+        </button>
+        <button id="removeType" mat-icon-button (click)="hideFilterControls(type, 'addType', 'removeType')" class="categ-type-button" style="display: none">
+          <i class="fas fa-minus-circle" ></i>
+        </button>
+    </div>
+    <div class="sidebar-categ-filter">
+      <form class="example-form" #type hidden="true">
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Rechercher">
+          </mat-select>
+        </mat-form-field>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-type-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
+      </form>
+      <div class="filter-added">
+        <i class="fas fa-times" aria-hidden="true" (click)="removeFilter(type)"> Test</i>
+        <div class="categ-type-button-count"> belimba</div>
+      </div>
     </div>
   </div>
   <div class="sidebar-categ categ-county">
     <div class="sidebar-categ-title">
       <div><i class="far fa-map"></i> Département</div>
-      <button mat-icon-button (click)="county.hidden = false" class="categ-county-button">
-        <i class="fas fa-plus-circle" aria-hidden="true"></i>
+      <button id="addCounty" mat-icon-button (click)="showFilterControls(county, 'addCounty', 'removeCounty')" class="categ-county-button">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button id="removeCounty" mat-icon-button (click)="hideFilterControls(county, 'addCounty', 'removeCounty')" class="categ-county-button" style="display: none">
+        <i class="fas fa-minus-circle"></i>
       </button>
     </div>
     <div class="sidebar-categ-filter">
@@ -33,29 +69,132 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Rechercher">
         </mat-form-field>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-county-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="sidebar-categ categ-city">
+    <div class="sidebar-categ-title">
+      <div><i class="fas fa-map-marker-alt"></i> Commune</div>
+      <button id="addCity" mat-icon-button (click)="showFilterControls(city, 'addCity', 'removeCity')" class="categ-city-button">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button id="removeCity" mat-icon-button (click)="hideFilterControls(city, 'addCity', 'removeCity')" class="categ-city-button" style="display: none">
+        <i class="fas fa-minus-circle"></i>
+      </button>
+    </div>
+    <div class="sidebar-categ-filter">
+      <form class="example-form" #city hidden="true">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Rechercher">
+        </mat-form-field>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-city-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="sidebar-categ categ-creation">
+    <div class="sidebar-categ-title">
+      <div><i class="far fa-calendar"></i> Année de création</div>
+      <button id="addCreation" mat-icon-button (click)="showFilterControls(creation, 'addCreation', 'removeCreation')" class="categ-creation-button">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button id="removeCreation" mat-icon-button (click)="hideFilterControls(creation, 'addCreation', 'removeCreation')" class="categ-creation-button" style="display: none">
+        <i class="fas fa-minus-circle"></i>
+      </button>
+    </div>
+    <div class="sidebar-categ-filter">
+      <form class="example-form" #creation hidden="true">
+        <mat-form-field class="example-full-width">
+          <input matInput #creationDate type="tel" maxlength="4" placeholder="Rechercher">
+        </mat-form-field>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-creation-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
       </form>
     </div>
   </div>
   <div class="sidebar-categ categ-legal">
     <div class="sidebar-categ-title">
       <div><i class="fas fa-bookmark"></i> Statut juridique</div>
-      <button mat-icon-button (click)="legal.hidden = false" class="categ-legal-button">
-        <i class="fas fa-plus-circle" aria-hidden="true"></i>
+      <button id="addLegal" mat-icon-button (click)="showFilterControls(legal, 'addLegal', 'removeLegal')" class="categ-legal-button">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button id="removeLegal" mat-icon-button (click)="hideFilterControls(legal, 'addLegal', 'removeLegal')" class="categ-legal-button" style="display: none">
+        <i class="fas fa-minus-circle"></i>
       </button>
     </div>
     <div class="sidebar-categ-filter">
       <form class="example-form" #legal hidden="true">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Rechercher">
+          <mat-select placeholder="Rechercher">
+          </mat-select>
         </mat-form-field>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-legal-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="sidebar-categ categ-effectives">
+    <div class="sidebar-categ-title">
+      <div><i class="fas fa-users"></i> Effectifs</div>
+      <button id="addEffectives" mat-icon-button (click)="showFilterControls(effectives, 'addEffectives', 'removeEffectives')" class="categ-effectives-button">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button id="removeEffectives" mat-icon-button (click)="hideFilterControls(effectives, 'addEffectives', 'removeEffectives')" class="categ-effectives-button" style="display: none">
+        <i class="fas fa-minus-circle"></i>
+      </button>
+    </div>
+    <div class="sidebar-categ-filter">
+      <form class="example-form" #effectives hidden="true">
+        <mat-slider
+                max="500"
+                min="1"
+                thumb-label="thumbLabel"
+                tick-interval="autoTicks">
+        </mat-slider>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-effectives-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="sidebar-categ categ-revenues">
+    <div class="sidebar-categ-title">
+      <div><i class="fas fa-signal"></i> Chiffre d'Affaires</div>
+      <button id="addRevenues" mat-icon-button (click)="showFilterControls(revenues, 'addRevenues', 'removeRevenues')" class="categ-revenues-button">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button id="removeRevenues" mat-icon-button (click)="hideFilterControls(revenues, 'addRevenues', 'removeRevenues')" class="categ-revenues-button" style="display: none">
+        <i class="fas fa-minus-circle"></i>
+      </button>
+    </div>
+    <div class="sidebar-categ-filter">
+      <form class="example-form" #revenues hidden="true">
+        <mat-slider
+                max="500"
+                min="1"
+                thumb-label="thumbLabel"
+                tick-interval="autoTicks">
+        </mat-slider>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-revenues-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
       </form>
     </div>
   </div>
   <div class="sidebar-categ categ-postal">
     <div class="sidebar-categ-title">
       <div><i class="fas fa-map"></i> Code Postal</div>
-      <button mat-icon-button (click)="postal.hidden = false" class="categ-postal-button">
-        <i class="fas fa-plus-circle" aria-hidden="true"></i>
+      <button id="addPostal" mat-icon-button (click)="showFilterControls(postal, 'addPostal', 'removePostal')" class="categ-postal-button">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button id="removePostal" mat-icon-button (click)="hideFilterControls(postal, 'addPostal', 'removePostal')" class="categ-postal-button" style="display: none">
+        <i class="fas fa-minus-circle"></i>
       </button>
     </div>
     <div class="sidebar-categ-filter">
@@ -63,6 +202,9 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Rechercher">
         </mat-form-field>
+        <button mat-icon-button (click)="type.hidden = false" class="categ-postal-button">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </button>
       </form>
     </div>
   </div>
