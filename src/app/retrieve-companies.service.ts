@@ -35,6 +35,7 @@ export class RetrieveCompaniesService {
                         record.fields.libapen,
                         record.fields.libtefet,
                         record.fields.date_deb_etat_adm_et,
+                        record.fields.coordonnees,
                     ));
                 });
                 this.retrieveCompanies.emit(companies as Company[]);
