@@ -10,45 +10,60 @@
   <div class="sidebar-categ categ-radie">
     <div class="sidebar-categ-title">
       <div><i class="fas fa-sitemap"></i> Radiation (Oui/Non)</div>
-      <button mat-icon-button (click)="addFilter()" class="categ-radie-button">
+      <button mat-icon-button (click)="radiation.hidden = false"  class="categ-radie-button">
         <i class="fas fa-plus-circle" aria-hidden="true"></i>
       </button>
     </div>
     <div class="sidebar-categ-filter">
-
+      <mat-radio-group #radiation hidden="true" class="filter-radio">
+        <mat-radio-button value="true">Oui</mat-radio-button>
+        <mat-radio-button value="false">Non</mat-radio-button>
+      </mat-radio-group>
     </div>
   </div>
   <div class="sidebar-categ categ-county">
     <div class="sidebar-categ-title">
       <div><i class="far fa-map"></i> Département</div>
-      <button mat-icon-button (click)="addFilter()" class="categ-county-button">
+      <button mat-icon-button (click)="county.hidden = false" class="categ-county-button">
         <i class="fas fa-plus-circle" aria-hidden="true"></i>
       </button>
     </div>
     <div class="sidebar-categ-filter">
-
+      <form class="example-form" #county hidden="true">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Rechercher">
+        </mat-form-field>
+      </form>
     </div>
   </div>
   <div class="sidebar-categ categ-legal">
     <div class="sidebar-categ-title">
       <div><i class="fas fa-bookmark"></i> Statut juridique</div>
-      <button mat-icon-button (click)="addFilter()" class="categ-legal-button">
+      <button mat-icon-button (click)="legal.hidden = false" class="categ-legal-button">
         <i class="fas fa-plus-circle" aria-hidden="true"></i>
       </button>
     </div>
     <div class="sidebar-categ-filter">
-
+      <form class="example-form" #legal hidden="true">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Rechercher">
+        </mat-form-field>
+      </form>
     </div>
   </div>
   <div class="sidebar-categ categ-postal">
     <div class="sidebar-categ-title">
       <div><i class="fas fa-map"></i> Code Postal</div>
-      <button mat-icon-button (click)="addFilter()" class="categ-postal-button">
+      <button mat-icon-button (click)="postal.hidden = false" class="categ-postal-button">
         <i class="fas fa-plus-circle" aria-hidden="true"></i>
       </button>
     </div>
     <div class="sidebar-categ-filter">
-
+      <form class="example-form" #postal hidden="true">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Rechercher">
+        </mat-form-field>
+      </form>
     </div>
   </div>
   <div class="sidebar-categ-desc">
