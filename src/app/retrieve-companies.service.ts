@@ -1,10 +1,13 @@
 import {Injectable, EventEmitter} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {FirmApiInterface} from './firm-api-interface';
+import {ApiInterface} from './Model/api-interface';
+import {CompanyInterface} from './Model/company-interface';
+import {Company} from './Model/company';
 
 @Injectable()
 export class RetrieveCompaniesService {
+    private url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene&lang=fr';
     params = {};
     retrieveCompanies = new EventEmitter();
     filterCompanies = new EventEmitter();
@@ -17,9 +20,25 @@ export class RetrieveCompaniesService {
     }
 
     getCompanies(params = {}) {
-        return this.http.get('https://firmapi.com/api/v1/companies', { params: params }).map(
-            (res) => res as FirmApiInterface).subscribe(
-                (response) => this.retrieveCompanies.emit(response.companies)
+        return this.http.get(this.url, {params: params}).map(
+            (res) => res as ApiInterface).subscribe(
+            (response) => {
+                const companies = [];
+                response.records.forEach((record: CompanyInterface) => {
+                    companies.push(new Company(
+                        record.fields.siren,
+                        record.fields.l1_normalisee,
+                        record.fields.l4_normalisee,
+                        record.fields.codpos,
+                        record.fields.libcom,
+                        record.fields.categorie,
+                        record.fields.libapen,
+                        record.fields.libtefet,
+                        record.fields.date_deb_etat_adm_et,
+                    ));
+                });
+                this.retrieveCompanies.emit(companies as Company[]);
+            }
         );
     }
 }
