@@ -9,7 +9,7 @@ import {RetrieveCompaniesService} from "../retrieve-companies.service";
 export class NavbarComponent {
     filter: {};
     @Input() parameter: string;
-    public pathToImg = 'assets/img/Open-Annuaire.png';
+    public pathToImg = 'assets/img/Open-Annuaire.jpg';
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
     }
