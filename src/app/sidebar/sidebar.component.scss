@@ -37,6 +37,19 @@
                     padding: 10px 20px 10px 20px;
                     flex: 0 0 10%;
                 }
+                &-filter {
+                    .filter-radio{
+                        mat-radio-button{
+                            margin: 0 5px;
+                        }
+                    }
+                    .mat-radio-inner-circle, .mat-radio-outer-circle {
+                        border-color: $first-gradient;
+                    }
+                    .mat-radio-inner-circle {
+                        background-color: $first-gradient;
+                    }
+                }
             }
             .categ{
                 &-header {
@@ -69,7 +82,6 @@
                     }
                 }
             }
-
         }
     }
     mat-sidenav-content{
