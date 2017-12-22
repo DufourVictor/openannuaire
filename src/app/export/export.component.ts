@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {CompanyInterface} from '../company-interface';
-import {Company} from '../Company';
+
 import {Angular2Csv} from 'angular2-csv';
 
 @Component({
