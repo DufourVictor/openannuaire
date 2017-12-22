@@ -1,45 +1,52 @@
-import {Component, Input} from '@angular/core';
-
-import {Angular2Csv} from 'angular2-csv';
+import {Component, OnInit} from '@angular/core';
+import {Company} from '../Model/company';
+import {RetrieveCompaniesService} from '../retrieve-companies.service';
+import {ExportService} from '../export.service';
+import {Extensions} from "../Enums/extensions.enum";
 
 @Component({
     selector: 'app-export',
     templateUrl: './export.component.html',
     styleUrls: ['./export.component.scss']
 })
-export class ExportComponent {
-    companies: CompanyInterface[];
+export class ExportComponent implements OnInit {
+    private urlExport = 'https://data.opendatasoft.com/explore/dataset/sirene@public/download/?timezone=Europe/Berlin&use_labels_for_header=true&format=';
+    companies: Company[];
 
-    constructor() {
+    constructor(private retrieveCompaniesService: RetrieveCompaniesService, private exportService: ExportService) {
+        this.retrieveCompaniesService.retrieveCompanies.subscribe(
+            (companies: Company[]) => this.companies = companies
+        );
     }
 
-    @Input('companies')
-    set companiesParent(companies: CompanyInterface[]) {
-        this.companies = companies;
+    ngOnInit() {
+        this.retrieveCompaniesService.getCompanies();
     }
 
-    exportCompanies() {
-        const arrayCompanies = [];
-        const head = ['Siren', 'Nom', 'Capitale', 'Forme juridique', 'Adresse', 'Code postal', 'Ville', 'Radié', 'Activité'];
-        const options = {
-            fieldSeparator: ';',
-            headers: head
-        };
+    export(extension, full = null) {
+        switch (extension) {
+            case Extensions.CSV:
+                if (null === full) {
+                    this.exportService.exportCsv(this.companies);
+                } else {
+                    window.location.href = this.urlExport + Extensions.CSV;
+                }
+                break;
+            case Extensions.JSON:
+                if (null === full) {
+                    this.exportService.exportJson(this.companies);
+                } else {
+                    window.location.href = this.urlExport + Extensions.JSON;
+                }
+                break;
 
-        for (const company of this.companies) {
-            arrayCompanies.push(new Company(
-                company.siren,
-                company.names.best,
-                company.capital,
-                company.legal_form,
-                company.address,
-                company.postal_code,
-                company.city,
-                company.radie,
-                company.activity,
-            ));
+            case Extensions.XLS:
+                if (null === full) {
+                    this.exportService.exportExcel(this.companies);
+                } else {
+                    window.location.href = this.urlExport + Extensions.XLS;
+                }
+                break;
         }
-
-        new Angular2Csv(arrayCompanies, 'Export des entreprises - Openannuaire', options);
     }
 }
