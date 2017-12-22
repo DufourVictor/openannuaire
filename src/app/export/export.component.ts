@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Company} from '../Model/company';
 import {RetrieveCompaniesService} from '../retrieve-companies.service';
 import {ExportService} from '../export.service';
+import {Extensions} from "../Enums/extensions.enum";
 
 @Component({
     selector: 'app-export',
@@ -9,6 +10,7 @@ import {ExportService} from '../export.service';
     styleUrls: ['./export.component.scss']
 })
 export class ExportComponent implements OnInit {
+    private urlExport = 'https://data.opendatasoft.com/explore/dataset/sirene@public/download/?timezone=Europe/Berlin&use_labels_for_header=true&format=';
     companies: Company[];
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService, private exportService: ExportService) {
@@ -21,21 +23,30 @@ export class ExportComponent implements OnInit {
         this.retrieveCompaniesService.getCompanies();
     }
 
-    exportCompaniesCsv(size = null) {
-        if (null === size) {
-            this.exportService.exportCsv(this.companies);
-        }
-    }
+    export(extension, full = null) {
+        switch (extension) {
+            case Extensions.CSV:
+                if (null === full) {
+                    this.exportService.exportCsv(this.companies);
+                } else {
+                    window.location.href = this.urlExport + Extensions.CSV;
+                }
+                break;
+            case Extensions.JSON:
+                if (null === full) {
+                    this.exportService.exportJson(this.companies);
+                } else {
+                    window.location.href = this.urlExport + Extensions.JSON;
+                }
+                break;
 
-    exportCompaniesJson(size = null) {
-        if (null === size) {
-            this.exportService.exportJson(this.companies);
-        }
-    }
-
-    exportCompaniesXls(size = null) {
-        if (null === size) {
-            this.exportService.exportExcel(this.companies);
+            case Extensions.XLS:
+                if (null === full) {
+                    this.exportService.exportExcel(this.companies);
+                } else {
+                    window.location.href = this.urlExport + Extensions.XLS;
+                }
+                break;
         }
     }
 }

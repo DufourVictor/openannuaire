@@ -3,9 +3,10 @@ import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import {Angular2Csv} from 'angular2-csv';
 import {Company} from "./Model/company";
+import {Extensions} from "./Enums/extensions.enum";
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-const EXCEL_EXTENSION = '.xlsx';
+const JSON_TYPE = 'application/json;charset=UTF-8';
 
 @Injectable()
 export class ExportService {
@@ -45,9 +46,9 @@ export class ExportService {
         this.companies = this.convertDataExport(companies);
 
         const data: Blob = new Blob([JSON.stringify(this.companies)], {
-            type: 'application/json;charset=UTF-8'
+            type: JSON_TYPE
         });
-        FileSaver.saveAs(data, 'JSON - Export des entreprises - Openannuaire.json');
+        FileSaver.saveAs(data, 'JSON - Export des entreprises - Openannuaire.' + Extensions.JSON);
     }
 
     /**
@@ -63,7 +64,7 @@ export class ExportService {
         const data: Blob = new Blob([excelBuffer], {
             type: EXCEL_TYPE
         });
-        FileSaver.saveAs(data, 'Excel - Export des entreprises - Openannuaire' + EXCEL_EXTENSION);
+        FileSaver.saveAs(data, 'Excel - Export des entreprises - Openannuaire');
     }
 
     /**
