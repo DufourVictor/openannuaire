@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-
-import {Angular2Csv} from 'angular2-csv';
-import {RetrieveCompaniesService} from "../retrieve-companies.service";
+import {Component, OnInit} from '@angular/core';
+import {Company} from '../Model/company';
+import {RetrieveCompaniesService} from '../retrieve-companies.service';
+import {ExportService} from '../export.service';
 
 @Component({
     selector: 'app-export',
@@ -9,40 +9,33 @@ import {RetrieveCompaniesService} from "../retrieve-companies.service";
     styleUrls: ['./export.component.scss']
 })
 export class ExportComponent implements OnInit {
-    companies: CompanyInterface[];
-    params = {};
+    companies: Company[];
 
-    constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
+    constructor(private retrieveCompaniesService: RetrieveCompaniesService, private exportService: ExportService) {
+        this.retrieveCompaniesService.retrieveCompanies.subscribe(
+            (companies: Company[]) => this.companies = companies
+        );
     }
 
     ngOnInit() {
-        this.retrieveCompaniesService.getCompanies(this.params).subscribe(data => {
-            this.companies = data.companies as CompanyInterface[];
-        });
+        this.retrieveCompaniesService.getCompanies();
     }
 
-    exportCompanies() {
-        const arrayCompanies = [];
-        const head = ['Siren', 'Nom', 'Capitale', 'Forme juridique', 'Adresse', 'Code postal', 'Ville', 'Radié', 'Activité'];
-        const options = {
-            fieldSeparator: ';',
-            headers: head,
-        };
+    exportCompaniesCsv(size = null) {
+        if (null === size) {
+            this.exportService.exportCsv(this.companies);
+        }
+    }
 
-        this.companies.forEach(company => {
-            arrayCompanies.push(new Company(
-                company.siren,
-                company.names.best,
-                company.capital,
-                company.legal_form,
-                company.address,
-                company.postal_code,
-                company.city,
-                company.radie,
-                company.activity,
-            ));
-        })
+    exportCompaniesJson(size = null) {
+        if (null === size) {
+            this.exportService.exportJson(this.companies);
+        }
+    }
 
-        new Angular2Csv(arrayCompanies, 'Export des entreprises - Openannuaire', options);
+    exportCompaniesXls(size = null) {
+        if (null === size) {
+            this.exportService.exportExcel(this.companies);
+        }
     }
 }

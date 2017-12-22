@@ -1,1 +1,11 @@
-<button (click)="exportCompanies()" class="mat-button">Export</button>
+<p>CSV</p>
+<button (click)="exportCompaniesCsv('full')" class="mat-button">Jeu de données entier</button>
+<button (click)="exportCompaniesCsv()" class="mat-button">Seulement les (count) enreigstrements sélectionnés</button>
+
+<p>JSON</p>
+<button (click)="exportCompaniesJson('full')" class="mat-button">Jeu de données entier</button>
+<button (click)="exportCompaniesJson()" class="mat-button">Seulement les (count) enreigstrements sélectionnés</button>
+
+<p>Excel</p>
+<button (click)="exportCompaniesXls('full')" class="mat-button">Jeu de données entier</button>
+<button (click)="exportCompaniesXls()" class="mat-button">Seulement les (count) enreigstrements sélectionnés</button>

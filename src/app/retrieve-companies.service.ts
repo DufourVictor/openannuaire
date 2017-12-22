@@ -7,7 +7,7 @@ import {Company} from './Model/company';
 
 @Injectable()
 export class RetrieveCompaniesService {
-    private url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene&lang=fr';
+    private url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene&lang=fr&rows=100';
     params = {};
     retrieveCompanies = new EventEmitter();
     filterCompanies = new EventEmitter();
@@ -35,7 +35,6 @@ export class RetrieveCompaniesService {
                         record.fields.libapen,
                         record.fields.libtefet,
                         record.fields.date_deb_etat_adm_et,
-                        record.fields.coordonnees,
                     ));
                 });
                 this.retrieveCompanies.emit(companies as Company[]);

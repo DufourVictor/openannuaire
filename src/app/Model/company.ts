@@ -8,9 +8,8 @@ export class Company {
     activity: string;
     effectif: string;
     startDate: string;
-    coordonnees: {};
 
-    constructor(siren, name, address, postal_code, city, category, activity, effectif, startDate, coordonnees) {
+    constructor(siren, name, address, postal_code, city, category, activity, effectif, startDate) {
         this.siren = siren;
         this.name = name;
         this.address = address;
@@ -20,6 +19,5 @@ export class Company {
         this.activity = activity;
         this.effectif = effectif;
         this.startDate = startDate;
-        this.coordonnees = coordonnees;
     }
 }
