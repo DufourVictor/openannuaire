@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { Company } from '../model/company';
+import { Company } from '../Model/company';
 import { RetrieveCompaniesService } from '../retrieve-companies.service';
 
 @Component({
