@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {AppRoutingModule} from './/app-routing.module';
 import {AgmCoreModule} from '@agm/core';
+import * as myGlobals from './globals';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -93,7 +94,7 @@ import {ExportComponent} from './export/export.component';
         AppRoutingModule,
         HttpClientModule,
         AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyCUMXjVSSgh_WRBmIYFH2sWAYKc_8-Fwl4'
+            apiKey: myGlobals.ApiKey
         })
     ],
     providers: [],
