@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import {Angular2Csv} from 'angular2-csv';
-import {Company} from "./Model/company";
-import {Extensions} from "./Enums/extensions.enum";
+import {Company} from './Model/company';
+import {Extensions} from './Enums/extensions.enum';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const JSON_TYPE = 'application/json;charset=UTF-8';
