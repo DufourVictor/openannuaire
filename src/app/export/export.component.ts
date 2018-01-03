@@ -23,25 +23,24 @@ export class ExportComponent implements OnInit {
         this.retrieveCompaniesService.getCompanies();
     }
 
-    export(extension, full = null) {
+    export(extension, full = false) {
         switch (extension) {
             case Extensions.CSV:
-                if (null === full) {
+                if (false === full) {
                     this.exportService.exportCsv(this.companies);
                 } else {
                     window.location.href = this.urlExport + Extensions.CSV;
                 }
                 break;
             case Extensions.JSON:
-                if (null === full) {
+                if (false === full) {
                     this.exportService.exportJson(this.companies);
                 } else {
                     window.location.href = this.urlExport + Extensions.JSON;
                 }
                 break;
-
             case Extensions.XLS:
-                if (null === full) {
+                if (false === full) {
                     this.exportService.exportExcel(this.companies);
                 } else {
                     window.location.href = this.urlExport + Extensions.XLS;

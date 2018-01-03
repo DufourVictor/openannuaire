@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ListCompaniesComponent} from './list-companies/list-companies.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidebarComponent} from './sidebar/sidebar.component';
-import {AppRoutingModule} from './/app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 import {AgmCoreModule} from '@agm/core';
 import * as myGlobals from './globals';
 import {
