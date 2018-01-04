@@ -38,8 +38,13 @@ export class RetrieveCompaniesService {
                         record.fields.coordonnees,
                     ));
                 });
+
                 this.retrieveCompanies.emit(companies as Company[]);
             }
         );
+    }
+
+    getTotalCompanies() {
+        return this.http.get(this.url).map((res) => res as ApiInterface);
     }
 }
