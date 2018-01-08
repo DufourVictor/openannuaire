@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {RetrieveCompaniesService} from './retrieve-companies.service';
 import {ExportService} from './export.service';
 
@@ -8,15 +8,9 @@ import {ExportService} from './export.service';
     styleUrls: ['./app.component.css'],
     providers: [RetrieveCompaniesService, ExportService],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     toggle = true;
 
-    constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
-    }
-
-    ngOnInit() {
-        this.retrieveCompaniesService.getCompanies();
-    }
 
     toggleSidebar() {
         this.toggle = !this.toggle;

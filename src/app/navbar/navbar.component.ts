@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {RetrieveCompaniesService} from "../retrieve-companies.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {RetrieveCompaniesService} from "../retrieve-companies.service";
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
     filter: {};
     @Input() parameter: string;
     pathToImg = 'assets/img/Open-Annuaire.jpg';
@@ -15,6 +15,9 @@ export class NavbarComponent implements OnInit {
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
         this.currentDate = new Date().toLocaleDateString();
+        this.retrieveCompaniesService.totalCompanies.subscribe(
+            (total: number) => this.totalCompanies = total
+        );
     }
 
     onFilter(filter: string) {
@@ -23,13 +26,5 @@ export class NavbarComponent implements OnInit {
             name: this.parameter,
             filter: filter,
         });
-    }
-
-    ngOnInit() {
-        this.retrieveCompaniesService.getTotalCompanies().subscribe(
-            (response) => {
-                this.totalCompanies = response.nhits;
-            }
-        )
     }
 }
