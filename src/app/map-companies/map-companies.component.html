@@ -1,3 +1,3 @@
-<agm-map [latitude]="lat" [longitude]="lng" [title]="title" [styles]="styles">
-  <agm-marker  *ngFor="let company of companies" [latitude]="company.coordonnees[0]" [longitude]="company.coordonnees[1]"></agm-marker>
+<agm-map [latitude]="lat" [longitude]="lng" [title]="title" [styles]="styles" [zoom]="8">
+  <agm-marker iconUrl="assets/img/marker.png"   *ngFor="let company of companies"  [title]="company.name" [latitude]="company.coordonnees[0]" [longitude]="company.coordonnees[1]"></agm-marker>
 </agm-map>

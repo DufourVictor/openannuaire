@@ -19,7 +19,7 @@ export class SidebarComponent {
     }
 
     removeFilter(filter) {
-        let child = document.getElementById("p1");
+        let child = document.getElementById('p1');
         filter.removeChild(child);
     }
 }
