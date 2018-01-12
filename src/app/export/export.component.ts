@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Company} from '../Model/company';
 import {RetrieveCompaniesService} from '../retrieve-companies.service';
 import {ExportService} from '../export.service';
-import {Extensions} from "../Enums/extensions.enum";
+import {Extensions} from '../Enums/extensions.enum';
 
 @Component({
     selector: 'app-export',
