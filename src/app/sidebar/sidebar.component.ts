@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {RetrieveCompaniesService} from '../retrieve-companies.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -6,20 +7,13 @@ import {Component} from '@angular/core';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-    showFilterControls(filter, addControl, removeControl) {
-        filter.hidden = false;
-        document.getElementById(addControl).style.display = 'none';
-        document.getElementById(removeControl).style.display = 'block';
-    }
+    totalCompanies: number;
 
-    hideFilterControls(filter, addControl, removeControl) {
-        filter.hidden = true;
-        document.getElementById(addControl).style.display = 'block';
-        document.getElementById(removeControl).style.display = 'none';
-    }
-
-    removeFilter(filter) {
-        let child = document.getElementById('p1');
-        filter.removeChild(child);
+    constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
+        this.retrieveCompaniesService.totalCompanies.subscribe(
+            (total: number) => {
+                this.totalCompanies = total;
+            }
+        );
     }
 }

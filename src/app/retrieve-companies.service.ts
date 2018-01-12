@@ -4,25 +4,42 @@ import 'rxjs/add/operator/map';
 import {ApiInterface} from './Model/api-interface';
 import {CompanyInterface} from './Model/company-interface';
 import {Company} from './Model/company';
+import {QueryBuilderService} from './query-builder.service';
+import {Filter} from './Model/filter';
 
 @Injectable()
 export class RetrieveCompaniesService {
-    private url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene&lang=fr&rows=100';
-    params = {};
+    static DATASET = 'sirene';
+    static LANG = 'fr';
+    static ROWS = '100';
+
+    private url = 'https://public.opendatasoft.com/api/records/1.0/search/';
     companies: Company[] = [];
     retrieveCompanies = new EventEmitter();
     filterCompanies = new EventEmitter();
     totalCompanies = new EventEmitter();
+    filters: Filter[] = [];
+    start = '0';
 
-    constructor(private http: HttpClient) {
-        this.filterCompanies.subscribe((params) => {
-            this.params[params.name] = params.filter.toString();
-            this.getCompanies(this.params);
+    constructor(private http: HttpClient, private query: QueryBuilderService) {
+        this.filterCompanies.subscribe((filter: Filter) => {
+            if (!this.filters.includes(filter)) {
+                this.filters.push(filter);
+            }
+            this.reloadCompanies(true);
         });
     }
 
-    getCompanies(params = {}) {
-        return this.http.get(this.url, {params: params}).map(
+    getCompanies() {
+        return this.http.get(this.url, {
+            params: {
+                dataset: RetrieveCompaniesService.DATASET,
+                lang: RetrieveCompaniesService.LANG,
+                rows: RetrieveCompaniesService.ROWS,
+                start: this.start,
+                q: this.query.queryBuilder(this.filters),
+            },
+        }).map(
             (res) => res as ApiInterface).subscribe(
             (response) => {
                 this.totalCompanies.emit(response.nhits);
@@ -36,7 +53,7 @@ export class RetrieveCompaniesService {
                         record.fields.categorie,
                         record.fields.libapen,
                         record.fields.libtefet,
-                        record.fields.date_deb_etat_adm_et,
+                        record.fields.dcret,
                         record.fields.coordonnees,
                     ));
                 });
@@ -44,5 +61,13 @@ export class RetrieveCompaniesService {
                 this.retrieveCompanies.emit(this.companies as Company[]);
             }
         );
+    }
+
+    reloadCompanies(reload = false) {
+        if (reload) {
+            this.companies = [];
+            this.start = '0';
+        }
+        return this.getCompanies();
     }
 }

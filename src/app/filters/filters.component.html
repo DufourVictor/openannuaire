@@ -1,0 +1,27 @@
+<mat-form-field *ngIf="type === 'text'">
+    <mat-label>{{ paramLabel }}</mat-label>
+
+    <mat-chip-list #chipList *ngIf="multiple">
+        <mat-chip *ngFor="let value of filter.values" [selectable]="selectable"
+                  [removable]="removable" (remove)="removeFilter(value)">
+            {{value}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input #chip_input
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeys"
+               [matChipInputAddOnBlur]="true"
+               (matChipInputTokenEnd)="addFilter(chip_input.value);chip_input.value='';"
+        />
+    </mat-chip-list>
+
+    <input #single_input matInput *ngIf="!multiple" (change)="addFilter(single_input.value)" class="search" placeholder="Nom de l'entreprise"/>
+</mat-form-field>
+
+<mat-form-field *ngIf="type === 'select'">
+    <mat-select #select_input placeholder="{{ paramLabel }}" (change)="addFilter(select_input.value)">
+        <mat-option *ngFor="let option of options" [value]="option">
+            {{ option }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
