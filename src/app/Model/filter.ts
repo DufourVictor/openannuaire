@@ -18,7 +18,7 @@ export class Filter {
         } else if (value.trim()) {
             this.values = [value];
         } else {
-            this.values = []; // @TODO : Peut-être à supprimer
+            this.values = [];
         }
     }
 

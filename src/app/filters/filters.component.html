@@ -2,8 +2,7 @@
     <mat-label>{{ paramLabel }}</mat-label>
 
     <mat-chip-list #chipList *ngIf="multiple">
-        <mat-chip *ngFor="let value of filter.values" [selectable]="selectable"
-                  [removable]="removable" (remove)="removeFilter(value)">
+        <mat-chip *ngFor="let value of filter.values" [selectable]="selectable" [removable]="removable" (remove)="removeFilter(value)">
             {{value}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
