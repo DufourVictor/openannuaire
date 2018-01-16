@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {RetrieveCompaniesService} from './retrieve-companies.service';
 import {ExportService} from './export.service';
 import {QueryBuilderService} from './query-builder.service';
@@ -11,6 +11,16 @@ import {QueryBuilderService} from './query-builder.service';
 })
 export class AppComponent {
     toggle = true;
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        // medium devices
+        if (event.target.innerWidth <= 991 && this.toggle === true) {
+            this.toggle = false;
+        } else if (event.target.innerWidth > 991 && this.toggle === false) {
+            this.toggle = true;
+        }
+    }
 
     toggleSidebar() {
         this.toggle = !this.toggle;
