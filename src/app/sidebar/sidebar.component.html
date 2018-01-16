@@ -22,14 +22,14 @@
     <div class="sidebar-categ categ-type">
         <div class="sidebar-categ-title">
             <div><i class="far fa-arrow-alt-circle-up"></i> Catégories d'entreprises</div>
-            <button id="type" mat-icon-button class="categ-type-button">
-                <i class="fas fa-plus-circle"></i>
+            <button id="type" mat-icon-button class="categ-type-button" (click)="toggleFilter('categories', !hideCategories)">
+                <i *ngIf="hideCategories === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideCategories === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter">
+        <div class="sidebar-categ-filter" [hidden]="hideCategories">
             <div class="filter-added">
                 <!--<div class="categ-type-button-count"> belimba</div>-->
-                <!-- @TODO: Filtre bugué -->
                 <app-filters paramName="categorie" paramLabel="Catégories d'entreprises" type="select" optionIndex="categories"></app-filters>
             </div>
         </div>
@@ -37,34 +37,37 @@
     <div class="sidebar-categ categ-county">
         <div class="sidebar-categ-title">
             <div><i class="far fa-map"></i> Département</div>
-            <button id="county" mat-icon-button class="categ-county-button">
-                <i class="fas fa-plus-circle"></i>
+            <button id="county" mat-icon-button class="categ-county-button" (click)="toggleFilter('county', !hideCounty)">
+                <i *ngIf="hideCounty === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideCounty === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter">
+        <div class="sidebar-categ-filter" [hidden]="hideCounty">
             <!-- @TODO: A faire -->
-            <!--<app-filters paramName="categorie" paramLabel="Département"></app-filters>-->
+            <app-filters paramName="categorie" paramLabel="Département"></app-filters>
         </div>
     </div>
     <div class="sidebar-categ categ-city">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-map-marker-alt"></i> Commune</div>
-            <button id="city" mat-icon-button class="categ-city-button">
-                <i class="fas fa-plus-circle"></i>
+            <button id="city" mat-icon-button class="categ-city-button" (click)="toggleFilter('city', !hideCity)">
+                <i *ngIf="hideCity === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideCity === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter">
+        <div class="sidebar-categ-filter" [hidden]="hideCity">
             <app-filters paramName="libcom" paramLabel="Commune"></app-filters>
         </div>
     </div>
     <div class="sidebar-categ categ-creation">
         <div class="sidebar-categ-title">
             <div><i class="far fa-calendar"></i> Année de création</div>
-            <button id="creation" mat-icon-button class="categ-creation-button">
-                <i class="fas fa-plus-circle"></i>
+            <button id="creation" mat-icon-button class="categ-creation-button" (click)="toggleFilter('creation', !hideCreation)">
+                <i *ngIf="hideCreation === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideCreation === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter">
+        <div class="sidebar-categ-filter" [hidden]="hideCreation">
             <!-- @TODO : A faire -->
             <app-filters paramName="dcret" paramLabel="Année de création"></app-filters>
         </div>
@@ -72,44 +75,48 @@
     <div class="sidebar-categ categ-legal">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-bookmark"></i> Statut juridique</div>
-            <button id="legal" mat-icon-button class="categ-legal-button">
-                <i class="fas fa-plus-circle"></i>
+            <button id="legal" mat-icon-button class="categ-legal-button" (click)="toggleFilter('legal', !hideLegal)">
+                <i *ngIf="hideLegal === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideLegal === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter">
+        <div class="sidebar-categ-filter" [hidden]="hideLegal">
             <app-filters paramName="libnj" paramLabel="Statut juridique"></app-filters>
         </div>
     </div>
     <div class="sidebar-categ categ-effectives">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-users"></i> Effectifs</div>
-            <button id="effectives" mat-icon-button class="categ-effectives-button">
-                <i class="fas fa-plus-circle"></i>
+            <button id="effectives" mat-icon-button class="categ-effectives-button" (click)="toggleFilter('effectives', !hideEffectives)">
+                <i *ngIf="hideEffectives === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideEffectives === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter">
+        <div class="sidebar-categ-filter" [hidden]="hideEffectives">
             <app-filters paramName="libtefet" paramLabel="Effectifs" [multiple]="false" optionIndex="effective" type="select"></app-filters>
         </div>
     </div>
     <div class="sidebar-categ categ-revenues">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-signal"></i> Chiffre d'Affaires</div>
-            <button id="revenues" mat-icon-button class="categ-revenues-button">
-                <i class="fas fa-plus-circle"></i>
+            <button id="revenues" mat-icon-button class="categ-revenues-button" (click)="toggleFilter('revenues', !hideRevenues)">
+                <i *ngIf="hideRevenues === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideRevenues === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter">
+        <div class="sidebar-categ-filter" [hidden]="hideRevenues">
             <app-filters paramName="libtca" paramLabel="Effectifs" [multiple]="false" optionIndex="turnover" type="select"></app-filters>
         </div>
     </div>
     <div class="sidebar-categ categ-postal">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-map"></i> Code Postal</div>
-            <button id="postal" mat-icon-button class="categ-postal-button">
-                <i class="fas fa-plus-circle"></i>
+            <button id="postal" mat-icon-button class="categ-postal-button" (click)="toggleFilter('postal', !hidePostal)">
+                <i *ngIf="hidePostal === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hidePostal === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter">
+        <div class="sidebar-categ-filter" [hidden]="hidePostal">
             <app-filters paramName="codpos" paramLabel="Code postal"></app-filters>
         </div>
     </div>
