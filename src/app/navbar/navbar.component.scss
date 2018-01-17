@@ -1,15 +1,25 @@
 @import '../../sass/variables';
 
 .navbar{
-  .search {
-    width: 33%;
-    border: 1px solid $second-grey;
-    border-radius: 40px;
-    padding: 0 15px;
-    background: white;
-    margin: 0 50px;
-    height: 32px;
-    font-size: 14px;
+  .mat-toolbar-row{
+    @media screen and (max-width: 991px) {
+      display: flex;
+      flex-direction: column;
+      &.row{
+        height: 200px;
+        .help {
+          position: absolute;
+          left: 10px;
+          top: 160px;
+        }
+      }
+      &.row-second{
+        height: 100px;
+        justify-content: space-around;
+        font-size: 16px;
+        padding: 20px 0 20px 0;
+      }
+    }
   }
   .row {
     height: 64px;
