@@ -24,3 +24,11 @@
         </mat-option>
     </mat-select>
 </mat-form-field>
+
+<mat-form-field *ngIf="type === 'selectObject'">
+    <mat-select #select_input placeholder="{{ paramLabel }}" (change)="addFilter(select_input.value)">
+        <mat-option *ngFor="let option of options" [value]="option.value">
+            {{ option.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
