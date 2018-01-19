@@ -11,6 +11,16 @@ import {QueryBuilderService} from './query-builder.service';
 })
 export class AppComponent {
     toggle = true;
+    screenWidth: number;
+
+    constructor() {
+        // set screenWidth on page load
+        this.screenWidth = window.innerWidth;
+        window.onresize = () => {
+            // set screenWidth on screen size change
+            this.screenWidth = window.innerWidth;
+        };
+    }
 
     @HostListener('window:resize', ['$event'])
     onResize(event) {
