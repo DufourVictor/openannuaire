@@ -31,6 +31,7 @@ export class RetrieveCompaniesService {
     }
 
     getCompanies() {
+        this.companies = [];
         return this.http.get(this.url, {
             params: {
                 dataset: RetrieveCompaniesService.DATASET,
