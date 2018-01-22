@@ -6,6 +6,7 @@ import {CompanyInterface} from './Model/company-interface';
 import {Company} from './Model/company';
 import {QueryBuilderService} from './query-builder.service';
 import {Filter} from './Model/filter';
+import {Subscription} from "rxjs";
 
 @Injectable()
 export class RetrieveCompaniesService {
@@ -18,13 +19,20 @@ export class RetrieveCompaniesService {
     retrieveCompanies = new EventEmitter();
     filterCompanies = new EventEmitter();
     totalCompanies = new EventEmitter();
+    facetCompanies = new EventEmitter();
     filters: Filter[] = [];
+    facets: string[] = [];
     start = 0;
 
     constructor(private http: HttpClient, private query: QueryBuilderService) {
         this.filterCompanies.subscribe((filter: Filter) => {
             if (!this.filters.includes(filter)) {
                 this.filters.push(filter);
+            }
+        });
+        this.facetCompanies.subscribe((facet: string) => {
+            if (!this.facets.includes(facet)) {
+                this.facets.push(facet);
             }
             this.reloadCompanies(true);
         });
@@ -39,13 +47,16 @@ export class RetrieveCompaniesService {
                 dataset: RetrieveCompaniesService.DATASET,
                 lang: RetrieveCompaniesService.LANG,
                 rows: RetrieveCompaniesService.ROWS.toString(),
+                facet: this.facets,
                 start: this.start.toString(),
                 q: this.query.queryBuilder(this.filters),
             },
         }).map(
             (res) => res as ApiInterface).subscribe(
             (response) => {
+                console.log(response);
                 this.totalCompanies.emit(response.nhits);
+                this.facetCompanies.emit(response.facet_groups);
                 response.records.forEach((record: CompanyInterface) => {
                     this.companies.push(new Company(
                         record.fields.siren,
@@ -65,7 +76,8 @@ export class RetrieveCompaniesService {
         );
     }
 
-    reloadCompanies(reload = false) {
+    // Reload list of companies
+    reloadCompanies(reload = false): Subscription {
         if (reload) {
             this.companies = [];
             this.start = 0;
