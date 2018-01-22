@@ -14,6 +14,7 @@ export class FiltersComponent implements OnInit {
     removable = true;
     separatorKeys = [ENTER, COMMA];
     filter: Filter;
+    facets: string[] = [];
     options;
     timeout;
 
@@ -28,28 +29,34 @@ export class FiltersComponent implements OnInit {
     constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.filter = new Filter(this.paramName, this.operator, this.multiple, this.needName);
         this.options = DefaultFilters[this.optionIndex];
     }
 
-    onFilter() {
+    // Emit events
+    onFilter(): void {
         this.retrieveCompaniesService.filterCompanies.emit(this.filter);
+        this.retrieveCompaniesService.facetCompanies.emit(this.facets);
     }
 
+    // Add filter + facet for query
     addFilter(value): void {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
             if ((undefined !== value.trim() && 0 !== value.trim().length) ||
                 ('name' === this.paramName && 0 === value.trim().length)) {
                 this.filter.addValue(value.trim());
+                this.facets.push(this.paramName);
                 this.onFilter();
             }
         }, 500);
     }
 
+    // Remove filter + facet for query
     removeFilter(value): void {
         this.filter.removeValue(value);
+        this.facets.splice(this.facets.indexOf(this.paramName), 1);
         this.onFilter();
     }
 }

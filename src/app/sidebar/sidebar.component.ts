@@ -9,6 +9,7 @@ import {Filters} from "../Enums/filters.enum";
 })
 export class SidebarComponent {
     totalCompanies: number;
+    facetGroups: {};
 
     // State of filters
     hideApe = true;
@@ -25,6 +26,12 @@ export class SidebarComponent {
         this.retrieveCompaniesService.totalCompanies.subscribe(
             (total: number) => {
                 this.totalCompanies = total;
+            }
+        );
+        this.retrieveCompaniesService.facetCompanies.subscribe(
+            (facets: {}) => {
+                this.facetGroups = facets;
+                console.log(this.facetGroups);
             }
         );
     }
