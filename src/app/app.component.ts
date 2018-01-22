@@ -20,6 +20,10 @@ export class AppComponent {
             // set screenWidth on screen size change
             this.screenWidth = window.innerWidth;
         };
+
+        if (window.innerWidth <= 991) {
+            this.toggle = false;
+        }
     }
 
     @HostListener('window:resize', ['$event'])
