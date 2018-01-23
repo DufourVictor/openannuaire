@@ -31,7 +31,6 @@ export class SidebarComponent {
         this.retrieveCompaniesService.facetCompanies.subscribe(
             (facets: {}) => {
                 this.facetGroups = facets;
-                console.log(this.facetGroups);
             }
         );
     }
