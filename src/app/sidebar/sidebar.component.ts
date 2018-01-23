@@ -29,7 +29,8 @@ export class SidebarComponent {
         );
     }
 
-    toggleFilter(filter, visible) {
+    // Display filter
+    toggleFilter(filter, visible, input): void {
         switch (filter) {
             case Filters.APE:
                 this.hideApe = visible;
@@ -58,6 +59,36 @@ export class SidebarComponent {
             case Filters.POSTAL:
                 this.hidePostal = visible;
                 break;
+        }
+
+        if (true === visible && 0 !== input.filter.values.length) {
+            this.clearFilter(input, true);
+        }
+    }
+
+    // Reset all filters
+    resetFilters(inputs): void {
+        this.hideApe = true;
+        this.hideCategories = true;
+        this.hideCounty = true;
+        this.hideCity = true;
+        this.hideCreation = true;
+        this.hideLegal = true;
+        this.hideEffectives = true;
+        this.hideRevenues = true;
+        this.hidePostal = true;
+
+        inputs.forEach((input, key) => {
+            this.clearFilter(input, key + 1 === inputs.length)
+        });
+    }
+
+    // Clear value of one filter
+    clearFilter(input, refresh = false): void {
+        input.filter.values = [];
+
+        if (refresh) {
+            this.retrieveCompaniesService.getCompanies();
         }
     }
 }
