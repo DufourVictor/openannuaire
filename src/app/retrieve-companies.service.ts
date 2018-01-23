@@ -20,6 +20,7 @@ export class RetrieveCompaniesService {
     filterCompanies = new EventEmitter();
     totalCompanies = new EventEmitter();
     facetCompanies = new EventEmitter();
+    facetGroupsCompanies = new EventEmitter();
     filters: Filter[] = [];
     facets: string[] = [];
     start = '0';
@@ -55,7 +56,7 @@ export class RetrieveCompaniesService {
             (response) => {
                 console.log(response);
                 this.totalCompanies.emit(response.nhits);
-                this.facetCompanies.emit(response.facet_groups);
+                this.facetGroupsCompanies.emit(response.facet_groups);
                 response.records.forEach((record: CompanyInterface) => {
                     this.companies.push(new Company(
                         record.fields.siren,

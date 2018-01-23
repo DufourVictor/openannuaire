@@ -62,7 +62,7 @@ export interface CompanyInterface {
         coordonnees: [
             number,
             number
-            ];
+        ];
         depet: string;
         amintret: string;
         datemaj: string;
