@@ -101,14 +101,14 @@
     </div>
     <div class="sidebar-categ categ-revenues">
         <div class="sidebar-categ-title">
-            <div><i class="fas fa-signal"></i> Chiffre d'Affaires</div>
+            <div><i class="fas fa-signal"></i> Chiffre d'affaires</div>
             <button id="revenues" mat-icon-button class="categ-revenues-button" (click)="toggleFilter('revenues', !hideRevenues, revenues)">
                 <i *ngIf="hideRevenues === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideRevenues === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideRevenues">
-            <app-filters paramName="libtca" paramLabel="Effectifs" [multiple]="false" optionIndex="turnover" type="select" #revenues></app-filters>
+            <app-filters paramName="libtca" paramLabel="Chiffre d'affaires" [multiple]="false" optionIndex="turnover" type="select" #revenues></app-filters>
         </div>
     </div>
     <div class="sidebar-categ categ-postal">

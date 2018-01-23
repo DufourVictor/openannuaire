@@ -6,8 +6,7 @@
 
 <!-- Start SideNav -->
 <mat-sidenav-container class="sidebar-container">
-    <!--<mat-sidenav #sidenav mode="side" [opened]="toggle" class="sidebar">-->
-    <mat-sidenav #sidenav class="sidebar" [opened]="toggle" [mode]="(screenWidth > 840) ? 'side' : 'over'">
+    <mat-sidenav #sidenav class="sidebar" [opened]="toggle" [mode]="(screenWidth > 992) ? 'side' : 'over'">
         <app-sidebar></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
