@@ -35,7 +35,7 @@
         <div class="sidebar-categ-filter" [hidden]="hideCategories">
             <div class="filter-added">
                 <!--<div class="categ-type-button-count"> belimba</div>-->
-                <app-filters paramName="categorie" paramLabel="Catégories d'entreprises" type="select" optionIndex="categories" #categories></app-filters>
+                <app-filters paramName="categorie" paramLabel="Catégories d'entreprises" [multiple]="false" type="select" optionIndex="categories" #categories></app-filters>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideCounty">
-            <app-filters paramName="du" paramLabel="Département" type="selectObject" optionIndex="county" #county></app-filters>
+            <app-filters paramName="du" paramLabel="Département" [multiple]="false" type="selectObject" optionIndex="county" #county></app-filters>
         </div>
     </div>
     <div class="sidebar-categ categ-city">

@@ -55,7 +55,6 @@ export class RetrieveCompaniesService {
         }).map(
             (res) => res as ApiInterface).subscribe(
             (response) => {
-                console.log(response);
                 this.totalCompanies.emit(response.nhits);
                 this.facetGroupsCompanies.emit(response.facet_groups);
                 response.records.forEach((record: CompanyInterface) => {

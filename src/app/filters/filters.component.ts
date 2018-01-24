@@ -45,9 +45,18 @@ export class FiltersComponent implements OnInit {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
             if ((undefined !== value.trim() && 0 !== value.trim().length) ||
-                ('name' === this.paramName && 0 === value.trim().length)) {
+                ('name' === this.paramName && 0 === value.trim().length))
+            {
+                if (!this.filter.multiple) {
+                    this.filter.values = [];
+                }
+
                 this.filter.addValue(value.trim());
-                this.facets.push(this.paramName);
+
+                if (!this.facets.includes(this.paramName) && 'name' !== this.paramName) {
+                    this.facets.push(this.paramName);
+                }
+
                 this.onFilter();
             }
         }, 500);

@@ -9,7 +9,8 @@ import {Filters} from "../Enums/filters.enum";
 })
 export class SidebarComponent {
     totalCompanies: number;
-    facetGroups: {};
+    facetGroups = [];
+    facetCount = [];
 
     // State of filters
     hideApe = true;
@@ -28,9 +29,10 @@ export class SidebarComponent {
                 this.totalCompanies = total;
             }
         );
-        this.retrieveCompaniesService.facetCompanies.subscribe(
-            (facets: {}) => {
-                this.facetGroups = facets;
+        this.retrieveCompaniesService.facetGroupsCompanies.subscribe(
+            (facet = []) => {
+                this.facetGroups = facet;
+                this.countFacet();
             }
         );
     }
@@ -96,5 +98,20 @@ export class SidebarComponent {
         if (refresh) {
             this.retrieveCompaniesService.getCompanies();
         }
+    }
+
+    // Count facet by filters
+    countFacet(): void {
+        if (0 !== this.facetGroups.length) {
+            this.facetGroups.forEach(facetGroup => {
+                this.facetCount[facetGroup.name] = 0;
+                facetGroup.facets.forEach(facet => {
+                    console.log(facet);
+                    this.facetCount[facetGroup.name] += facet.count;
+                });
+            });
+        }
+
+        console.log(this.facetCount);
     }
 }
