@@ -28,4 +28,10 @@ export class ListCompaniesComponent implements OnInit {
     ngOnInit(): void {
         this.retrieveCompaniesService.getCompanies();
     }
+
+    onPageChange(event) {
+        if (event.pageSize * (event.pageIndex + 1) === event.length) {
+            this.retrieveCompaniesService.loadNextCompanies();
+        }
+    }
 }
