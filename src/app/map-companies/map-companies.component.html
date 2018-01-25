@@ -5,6 +5,10 @@
     [title]="company.name"
     [latitude]="company.coordonnees[0]"
     [longitude]="company.coordonnees[1]">
-
+    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+    <ng-template>
+      <span>{{company.name}}</span>
+    </ng-template>
+    </agm-snazzy-info-window>
   </agm-marker>
 </agm-map>

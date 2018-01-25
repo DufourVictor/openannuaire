@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AgmCoreModule} from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import * as myGlobals from './globals';
 import {
     MatAutocompleteModule,
@@ -96,6 +97,7 @@ import {ExportComponent} from './export/export.component';
         AgmCoreModule.forRoot({
             apiKey: myGlobals.ApiKey
         }),
+        AgmSnazzyInfoWindowModule
     ],
     providers: [],
     bootstrap: [AppComponent]
