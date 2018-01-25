@@ -11,7 +11,7 @@ import {Filter} from './Model/filter';
 export class RetrieveCompaniesService {
     static DATASET = 'sirene';
     static LANG = 'fr';
-    static ROWS = '100';
+    static ROWS = 100;
 
     private url = 'https://public.opendatasoft.com/api/records/1.0/search/';
     companies: Company[] = [];
@@ -19,7 +19,7 @@ export class RetrieveCompaniesService {
     filterCompanies = new EventEmitter();
     totalCompanies = new EventEmitter();
     filters: Filter[] = [];
-    start = '0';
+    start = 0;
 
     constructor(private http: HttpClient, private query: QueryBuilderService) {
         this.filterCompanies.subscribe((filter: Filter) => {
@@ -30,14 +30,16 @@ export class RetrieveCompaniesService {
         });
     }
 
-    getCompanies() {
-        this.companies = [];
+    getCompanies(refresh: boolean = true) {
+        if (refresh) {
+            this.companies = [];
+        }
         return this.http.get(this.url, {
             params: {
                 dataset: RetrieveCompaniesService.DATASET,
                 lang: RetrieveCompaniesService.LANG,
-                rows: RetrieveCompaniesService.ROWS,
-                start: this.start,
+                rows: RetrieveCompaniesService.ROWS.toString(),
+                start: this.start.toString(),
                 q: this.query.queryBuilder(this.filters),
             },
         }).map(
@@ -58,7 +60,6 @@ export class RetrieveCompaniesService {
                         record.fields.coordonnees,
                     ));
                 });
-
                 this.retrieveCompanies.emit(this.companies as Company[]);
             }
         );
@@ -67,8 +68,13 @@ export class RetrieveCompaniesService {
     reloadCompanies(reload = false) {
         if (reload) {
             this.companies = [];
-            this.start = '0';
+            this.start = 0;
         }
         return this.getCompanies();
+    }
+
+    loadNextCompanies() {
+        this.start += RetrieveCompaniesService.ROWS;
+        this.getCompanies(false);
     }
 }
