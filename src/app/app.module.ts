@@ -95,7 +95,7 @@ import {ExportComponent} from './export/export.component';
         HttpClientModule,
         AgmCoreModule.forRoot({
             apiKey: myGlobals.ApiKey
-        })
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent]
