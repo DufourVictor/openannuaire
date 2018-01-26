@@ -10,6 +10,8 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AgmCoreModule} from '@agm/core';
 import * as myGlobals from './globals';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -95,6 +97,8 @@ import { FiltersComponent } from './filters/filters.component';
         MatStepperModule,
         AppRoutingModule,
         HttpClientModule,
+        LoadingBarHttpClientModule,
+        LoadingBarModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: myGlobals.ApiKey
         })
