@@ -45,6 +45,8 @@ import {
 } from '@angular/material';
 import {MapCompaniesComponent} from './map-companies/map-companies.component';
 import {ExportComponent} from './export/export.component';
+import { FiltersComponent } from './filters/filters.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
     declarations: [
@@ -54,6 +56,8 @@ import {ExportComponent} from './export/export.component';
         ListCompaniesComponent,
         MapCompaniesComponent,
         ExportComponent,
+        FiltersComponent,
+        ModalComponent,
     ],
     imports: [
         BrowserModule,

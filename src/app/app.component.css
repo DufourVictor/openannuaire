@@ -1,0 +1,10 @@
+.mat-chip, .mat-chip:not(.mat-basic-chip){
+    margin: 5px 100% 5px 0 !important;
+    text-transform: capitalize;
+    background-color: transparent;
+    flex-direction: row-reverse;
+}
+.mat-chip-remove{
+    margin-left: 0;
+    margin-right: 5px;
+}
