@@ -45,8 +45,7 @@ export class FiltersComponent implements OnInit {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
             if ((undefined !== value.trim() && 0 !== value.trim().length) ||
-                ('name' === this.paramName && 0 === value.trim().length))
-            {
+                ('name' === this.paramName && 0 === value.trim().length)) {
                 if (!this.filter.multiple) {
                     this.filter.values = [];
                 }
@@ -62,10 +61,9 @@ export class FiltersComponent implements OnInit {
         }, 500);
     }
 
-    // Remove filter + facet for query
+    // Remove filter
     removeFilter(value): void {
         this.filter.removeValue(value);
-        this.facets.splice(this.facets.indexOf(this.paramName), 1);
         this.onFilter();
     }
 }

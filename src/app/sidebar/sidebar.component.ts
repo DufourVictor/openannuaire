@@ -30,9 +30,9 @@ export class SidebarComponent {
             }
         );
         this.retrieveCompaniesService.facetGroupsCompanies.subscribe(
-            (facet = []) => {
-                this.facetGroups = facet;
-                this.countFacet();
+            (facets = []) => {
+                this.facetGroups = facets;
+                this.countFacets();
             }
         );
     }
@@ -87,7 +87,7 @@ export class SidebarComponent {
         this.hidePostal = true;
 
         inputs.forEach((input, key) => {
-            this.clearFilter(input, key + 1 === inputs.length)
+            this.clearFilter(input, key + 1 === inputs.length);
         });
     }
 
@@ -101,17 +101,23 @@ export class SidebarComponent {
     }
 
     // Count facet by filters
-    countFacet(): void {
+    countFacets(): void {
         if (0 !== this.facetGroups.length) {
             this.facetGroups.forEach(facetGroup => {
-                this.facetCount[facetGroup.name] = 0;
+                this.facetCount[facetGroup.name] = [];
                 facetGroup.facets.forEach(facet => {
-                    console.log(facet);
-                    this.facetCount[facetGroup.name] += facet.count;
+                    if (undefined === this.facetCount[facetGroup.name][facet.name]) {
+                        this.facetCount[facetGroup.name][facet.name] = facet.count;
+                    }
                 });
             });
         }
+    }
 
-        console.log(this.facetCount);
+    // Retrieve count facet by filter and value
+    retrieveCountFacetByFilterAndValue(filter, value) {
+        if (this.facetCount[filter]) {
+            return this.facetCount[filter][value];
+        }
     }
 }
