@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AgmCoreModule} from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import * as myGlobals from './globals';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
@@ -101,7 +102,8 @@ import { FiltersComponent } from './filters/filters.component';
         LoadingBarModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: myGlobals.ApiKey
-        })
+        }),
+        AgmSnazzyInfoWindowModule
     ],
     providers: [],
     bootstrap: [AppComponent]
