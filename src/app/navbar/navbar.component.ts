@@ -12,19 +12,17 @@ export class NavbarComponent {
     pathToImg = 'assets/img/Open-Annuaire.jpg';
     totalCompanies: number;
     currentDate: string;
+    load = false;
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
-        this.currentDate = new Date().toLocaleDateString();
         this.retrieveCompaniesService.totalCompanies.subscribe(
-            (total: number) => this.totalCompanies = total
+            (total: number) => {
+                if (false === this.load) {
+                    this.currentDate = new Date().toLocaleDateString();
+                    this.totalCompanies = total;
+                    this.load = true;
+                }
+            }
         );
-    }
-
-    onFilter(filter: string) {
-        this.filter = filter;
-        this.retrieveCompaniesService.filterCompanies.emit({
-            name: this.parameter,
-            filter: filter,
-        });
     }
 }
