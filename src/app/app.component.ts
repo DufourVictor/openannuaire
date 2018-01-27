@@ -2,7 +2,6 @@ import {Component, HostListener} from '@angular/core';
 import {RetrieveCompaniesService} from './retrieve-companies.service';
 import {ExportService} from './export.service';
 import {QueryBuilderService} from './query-builder.service';
-import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +13,7 @@ export class AppComponent {
     toggle = true;
     screenWidth: number;
 
-    constructor(private loadingBar: LoadingBarService) {
+    constructor() {
         // set screenWidth on page load
         this.screenWidth = window.innerWidth;
         window.onresize = () => {
