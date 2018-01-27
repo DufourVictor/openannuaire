@@ -76,18 +76,7 @@ export class ExportService {
         const arrayCompanies = [];
 
         companies.forEach(company => {
-            arrayCompanies.push((new Company(
-                company.siren,
-                company.name,
-                company.address,
-                company.postal_code,
-                company.city,
-                company.category,
-                company.activity,
-                company.effectif,
-                company.startDate,
-                company.coordonnees,
-            )).getExportData());
+            arrayCompanies.push(company.getExportData());
         });
 
         return arrayCompanies;

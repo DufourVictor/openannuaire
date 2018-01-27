@@ -1,0 +1,13 @@
+@import '../../sass/variables';
+
+input {
+    &.multiple-select {
+        background: inherit;
+        border: none;
+        color: $first-grey;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+}

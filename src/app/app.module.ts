@@ -11,6 +11,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AgmCoreModule} from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import * as myGlobals from './globals';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -46,6 +48,7 @@ import {
 } from '@angular/material';
 import {MapCompaniesComponent} from './map-companies/map-companies.component';
 import {ExportComponent} from './export/export.component';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
     declarations: [
@@ -55,6 +58,7 @@ import {ExportComponent} from './export/export.component';
         ListCompaniesComponent,
         MapCompaniesComponent,
         ExportComponent,
+        FiltersComponent,
     ],
     imports: [
         BrowserModule,
@@ -94,6 +98,8 @@ import {ExportComponent} from './export/export.component';
         MatStepperModule,
         AppRoutingModule,
         HttpClientModule,
+        LoadingBarHttpClientModule,
+        LoadingBarModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: myGlobals.ApiKey
         }),

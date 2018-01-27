@@ -1,214 +1,155 @@
 <div class="sidebar-content">
-  <div class="sidebar-categ categ-header">
-    <div class="sidebar-categ-title">
-      <div class="result"><span class="result-count">200</span> Résultats</div>
-      <button mat-icon-button class="categ-result-button">
-        <i class="fas fa-times" aria-hidden="true"></i>
-      </button>
+    <div class="sidebar-categ categ-header">
+        <div class="sidebar-categ-title">
+            <div class="result">
+                <span class="result-count">{{ totalCompanies }}</span>
+                <span *ngIf="totalCompanies > 0">résultats</span>
+                <span *ngIf="totalCompanies === 0">résultat</span>
+            </div>
+            <button (click)="resetFilters([ape, categories, county, city, creation, legal, effectives, revenues, postal])"
+                    mat-icon-button class="categ-result-button">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
     </div>
-  </div>
-  <div class="sidebar-categ categ-activity">
-    <div class="sidebar-categ-title">
-      <div><i class="fas fa-sitemap"></i> Activité (code APE)</div>
-      <button id="addActivity" mat-icon-button (click)="showFilterControls(ape, 'addActivity', 'removeActivity')" class="categ-activity-button">
-        <i class="fas fa-plus-circle"></i>
-      </button>
-      <button id="removeActivity" mat-icon-button (click)="hideFilterControls(ape, 'addActivity', 'removeActivity')" class="categ-activity-button" style="display: none">
-        <i class="fas fa-minus-circle"></i>
-      </button>
+    <div class="sidebar-categ categ-activity">
+        <div class="sidebar-categ-title">
+            <div><i class="fas fa-sitemap"></i> Activité (code APE)</div>
+            <button id="activity" mat-icon-button class="categ-activity-button" (click)="toggleFilter('ape', !hideApe, ape)">
+                <i *ngIf="hideApe === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hideApe === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hideApe">
+            <app-filters paramName="apen700" paramLabel="Code APE" #ape></app-filters>
+            <div class="categ-activity-button-count" *ngFor="let value of ape.filter.values">
+                {{ retrieveCountFacetByFilterAndValue(ape.paramName, value) }}
+            </div>
+        </div>
     </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #ape hidden="true">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Rechercher">
-        </mat-form-field>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-activity-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
+    <div class="sidebar-categ categ-type">
+        <div class="sidebar-categ-title">
+            <div><i class="far fa-arrow-alt-circle-up"></i> Catégories d'entreprises</div>
+            <button id="type" mat-icon-button class="categ-type-button" (click)="toggleFilter('categories', !hideCategories, categories)">
+                <i *ngIf="hideCategories === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hideCategories === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hideCategories">
+            <div class="filter-added">
+                <app-filters paramName="categorie" paramLabel="Catégories d'entreprises" type="selectObject" optionIndex="categories" #categories></app-filters>
+                <div class="categ-type-button-count" *ngFor="let value of categories.filter.values">
+                    {{ retrieveCountFacetByFilterAndValue(categories.paramName, value) }}
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="sidebar-categ categ-type">
-    <div class="sidebar-categ-title">
-      <div><i class="far fa-arrow-alt-circle-up"></i> Catégories d'entreprises</div>
-        <button id="addType" mat-icon-button (click)="showFilterControls(type, 'addType', 'removeType')" class="categ-type-button">
-          <i class="fas fa-plus-circle"></i>
-        </button>
-        <button id="removeType" mat-icon-button (click)="hideFilterControls(type, 'addType', 'removeType')" class="categ-type-button" style="display: none">
-          <i class="fas fa-minus-circle" ></i>
-        </button>
+    <div class="sidebar-categ categ-county">
+        <div class="sidebar-categ-title">
+            <div><i class="far fa-map"></i> Département</div>
+            <button id="county" mat-icon-button class="categ-county-button" (click)="toggleFilter('county', !hideCounty, county)">
+                <i *ngIf="hideCounty === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hideCounty === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hideCounty">
+            <app-filters paramName="du" paramLabel="Département" type="selectObject" optionIndex="county" #county></app-filters>
+            <div class="categ-county-button-count" *ngFor="let value of county.filter.values">
+                {{ retrieveCountFacetByFilterAndValue(county.paramName, value) }}
+            </div>
+        </div>
     </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #type hidden="true">
-        <mat-form-field class="example-full-width">
-          <mat-select placeholder="Rechercher">
-          </mat-select>
-        </mat-form-field>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-type-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
-      <div class="filter-added">
-        <i class="fas fa-times" aria-hidden="true" (click)="removeFilter(type)"> Test</i>
-        <div class="categ-type-button-count"> belimba</div>
-      </div>
+    <div class="sidebar-categ categ-city">
+        <div class="sidebar-categ-title">
+            <div><i class="fas fa-map-marker-alt"></i> Commune</div>
+            <button id="city" mat-icon-button class="categ-city-button" (click)="toggleFilter('city', !hideCity, city)">
+                <i *ngIf="hideCity === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hideCity === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hideCity">
+            <app-filters paramName="libcom" paramLabel="Commune" optionIndex="cities" type="selectObject" #city></app-filters>
+            <div class="categ-city-button-count" *ngFor="let value of city.filter.values">
+                {{ retrieveCountFacetByFilterAndValue(city.paramName, value) }}
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="sidebar-categ categ-county">
-    <div class="sidebar-categ-title">
-      <div><i class="far fa-map"></i> Département</div>
-      <button id="addCounty" mat-icon-button (click)="showFilterControls(county, 'addCounty', 'removeCounty')" class="categ-county-button">
-        <i class="fas fa-plus-circle"></i>
-      </button>
-      <button id="removeCounty" mat-icon-button (click)="hideFilterControls(county, 'addCounty', 'removeCounty')" class="categ-county-button" style="display: none">
-        <i class="fas fa-minus-circle"></i>
-      </button>
+    <div class="sidebar-categ categ-creation">
+        <div class="sidebar-categ-title">
+            <div><i class="far fa-calendar"></i> Année de création</div>
+            <button id="creation" mat-icon-button class="categ-creation-button" (click)="toggleFilter('creation', !hideCreation, creation)">
+                <i *ngIf="hideCreation === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hideCreation === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hideCreation">
+            <app-filters paramName="dcret" paramLabel="Année de création" #creation></app-filters>
+            <div class="categ-creation-button-count" *ngFor="let value of creation.filter.values">
+                {{ retrieveCountFacetByFilterAndValue(creation.paramName, value) }}
+            </div>
+        </div>
     </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #county hidden="true">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Rechercher">
-        </mat-form-field>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-county-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
+    <div class="sidebar-categ categ-legal">
+        <div class="sidebar-categ-title">
+            <div><i class="fas fa-bookmark"></i> Statut juridique</div>
+            <button id="legal" mat-icon-button class="categ-legal-button" (click)="toggleFilter('legal', !hideLegal, legal)">
+                <i *ngIf="hideLegal === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hideLegal === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hideLegal">
+            <app-filters paramName="nj" paramLabel="Statut juridique" optionIndex="legalStatus" type="selectObject" #legal></app-filters>
+            <div class="categ-legal-button-count" *ngFor="let value of legal.filter.values">
+                {{ retrieveCountFacetByFilterAndValue(legal.paramName, value) }}
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="sidebar-categ categ-city">
-    <div class="sidebar-categ-title">
-      <div><i class="fas fa-map-marker-alt"></i> Commune</div>
-      <button id="addCity" mat-icon-button (click)="showFilterControls(city, 'addCity', 'removeCity')" class="categ-city-button">
-        <i class="fas fa-plus-circle"></i>
-      </button>
-      <button id="removeCity" mat-icon-button (click)="hideFilterControls(city, 'addCity', 'removeCity')" class="categ-city-button" style="display: none">
-        <i class="fas fa-minus-circle"></i>
-      </button>
+    <div class="sidebar-categ categ-effectives">
+        <div class="sidebar-categ-title">
+            <div><i class="fas fa-users"></i> Effectifs</div>
+            <button id="effectives" mat-icon-button class="categ-effectives-button" (click)="toggleFilter('effectives', !hideEffectives, effectives)">
+                <i *ngIf="hideEffectives === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hideEffectives === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hideEffectives">
+            <app-filters paramName="tefet" paramLabel="Effectifs" optionIndex="effective" type="selectObject" #effectives></app-filters>
+            <div class="categ-effectives-button-count" *ngFor="let value of effectives.filter.values">
+                {{ retrieveCountFacetByFilterAndValue(effectives.paramName, value) }}
+            </div>
+        </div>
     </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #city hidden="true">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Rechercher">
-        </mat-form-field>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-city-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
+    <div class="sidebar-categ categ-revenues">
+        <div class="sidebar-categ-title">
+            <div><i class="fas fa-signal"></i> Chiffre d'affaires</div>
+            <button id="revenues" mat-icon-button class="categ-revenues-button" (click)="toggleFilter('revenues', !hideRevenues, revenues)">
+                <i *ngIf="hideRevenues === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hideRevenues === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hideRevenues">
+            <app-filters paramName="tca" paramLabel="Chiffre d'affaires" optionIndex="turnover" type="selectObject" #revenues></app-filters>
+            <div class="categ-revenues-button-count" *ngFor="let value of revenues.filter.values">
+                {{ retrieveCountFacetByFilterAndValue(revenues.paramName, value) }}
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="sidebar-categ categ-creation">
-    <div class="sidebar-categ-title">
-      <div><i class="far fa-calendar"></i> Année de création</div>
-      <button id="addCreation" mat-icon-button (click)="showFilterControls(creation, 'addCreation', 'removeCreation')" class="categ-creation-button">
-        <i class="fas fa-plus-circle"></i>
-      </button>
-      <button id="removeCreation" mat-icon-button (click)="hideFilterControls(creation, 'addCreation', 'removeCreation')" class="categ-creation-button" style="display: none">
-        <i class="fas fa-minus-circle"></i>
-      </button>
+    <div class="sidebar-categ categ-postal">
+        <div class="sidebar-categ-title">
+            <div><i class="fas fa-map"></i> Code Postal</div>
+            <button id="postal" mat-icon-button class="categ-postal-button" (click)="toggleFilter('postal', !hidePostal, postal)">
+                <i *ngIf="hidePostal === true" class="fas fa-angle-double-down"></i>
+                <i *ngIf="hidePostal === false" class="fas fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="sidebar-categ-filter" [hidden]="hidePostal">
+            <app-filters paramName="codpos" paramLabel="Code postal" #postal></app-filters>
+            <div class="categ-postal-button-count" *ngFor="let value of postal.filter.values">
+                {{ retrieveCountFacetByFilterAndValue(postal.paramName, value) }}
+            </div>
+        </div>
     </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #creation hidden="true">
-        <mat-form-field class="example-full-width">
-          <input matInput #creationDate type="tel" maxlength="4" placeholder="Rechercher">
-        </mat-form-field>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-creation-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
+    <div class="sidebar-categ-desc">
+        <p>Ajoutez et cumulez les critères de recherche pour affiner votre recherche :</p>
     </div>
-  </div>
-  <div class="sidebar-categ categ-legal">
-    <div class="sidebar-categ-title">
-      <div><i class="fas fa-bookmark"></i> Statut juridique</div>
-      <button id="addLegal" mat-icon-button (click)="showFilterControls(legal, 'addLegal', 'removeLegal')" class="categ-legal-button">
-        <i class="fas fa-plus-circle"></i>
-      </button>
-      <button id="removeLegal" mat-icon-button (click)="hideFilterControls(legal, 'addLegal', 'removeLegal')" class="categ-legal-button" style="display: none">
-        <i class="fas fa-minus-circle"></i>
-      </button>
-    </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #legal hidden="true">
-        <mat-form-field class="example-full-width">
-          <mat-select placeholder="Rechercher">
-          </mat-select>
-        </mat-form-field>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-legal-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-  <div class="sidebar-categ categ-effectives">
-    <div class="sidebar-categ-title">
-      <div><i class="fas fa-users"></i> Effectifs</div>
-      <button id="addEffectives" mat-icon-button (click)="showFilterControls(effectives, 'addEffectives', 'removeEffectives')" class="categ-effectives-button">
-        <i class="fas fa-plus-circle"></i>
-      </button>
-      <button id="removeEffectives" mat-icon-button (click)="hideFilterControls(effectives, 'addEffectives', 'removeEffectives')" class="categ-effectives-button" style="display: none">
-        <i class="fas fa-minus-circle"></i>
-      </button>
-    </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #effectives hidden="true">
-        <mat-slider
-                max="500"
-                min="1"
-                thumb-label="thumbLabel"
-                tick-interval="autoTicks">
-        </mat-slider>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-effectives-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-  <div class="sidebar-categ categ-revenues">
-    <div class="sidebar-categ-title">
-      <div><i class="fas fa-signal"></i> Chiffre d'Affaires</div>
-      <button id="addRevenues" mat-icon-button (click)="showFilterControls(revenues, 'addRevenues', 'removeRevenues')" class="categ-revenues-button">
-        <i class="fas fa-plus-circle"></i>
-      </button>
-      <button id="removeRevenues" mat-icon-button (click)="hideFilterControls(revenues, 'addRevenues', 'removeRevenues')" class="categ-revenues-button" style="display: none">
-        <i class="fas fa-minus-circle"></i>
-      </button>
-    </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #revenues hidden="true">
-        <mat-slider
-                max="500"
-                min="1"
-                thumb-label="thumbLabel"
-                tick-interval="autoTicks">
-        </mat-slider>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-revenues-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-  <div class="sidebar-categ categ-postal">
-    <div class="sidebar-categ-title">
-      <div><i class="fas fa-map"></i> Code Postal</div>
-      <button id="addPostal" mat-icon-button (click)="showFilterControls(postal, 'addPostal', 'removePostal')" class="categ-postal-button">
-        <i class="fas fa-plus-circle"></i>
-      </button>
-      <button id="removePostal" mat-icon-button (click)="hideFilterControls(postal, 'addPostal', 'removePostal')" class="categ-postal-button" style="display: none">
-        <i class="fas fa-minus-circle"></i>
-      </button>
-    </div>
-    <div class="sidebar-categ-filter">
-      <form class="example-form" #postal hidden="true">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Rechercher">
-        </mat-form-field>
-        <button mat-icon-button (click)="type.hidden = false" class="categ-postal-button">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-  <div class="sidebar-categ-desc">
-    <p>Ajoutez et cumulez les critères de recherche pour affiner votre recherche :</p>
-  </div>
 </div>
