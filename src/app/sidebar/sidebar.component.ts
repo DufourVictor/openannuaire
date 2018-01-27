@@ -9,6 +9,8 @@ import {Filters} from "../Enums/filters.enum";
 })
 export class SidebarComponent {
     totalCompanies: number;
+    facetGroups = [];
+    facetCount = [];
 
     // State of filters
     hideApe = true;
@@ -25,6 +27,12 @@ export class SidebarComponent {
         this.retrieveCompaniesService.totalCompanies.subscribe(
             (total: number) => {
                 this.totalCompanies = total;
+            }
+        );
+        this.retrieveCompaniesService.facetGroupsCompanies.subscribe(
+            (facets = []) => {
+                this.facetGroups = facets;
+                this.countFacets();
             }
         );
     }
@@ -79,7 +87,7 @@ export class SidebarComponent {
         this.hidePostal = true;
 
         inputs.forEach((input, key) => {
-            this.clearFilter(input, key + 1 === inputs.length)
+            this.clearFilter(input, key + 1 === inputs.length);
         });
     }
 
@@ -89,6 +97,27 @@ export class SidebarComponent {
 
         if (refresh) {
             this.retrieveCompaniesService.getCompanies();
+        }
+    }
+
+    // Count facet by filters
+    countFacets(): void {
+        if (0 !== this.facetGroups.length) {
+            this.facetGroups.forEach(facetGroup => {
+                this.facetCount[facetGroup.name] = [];
+                facetGroup.facets.forEach(facet => {
+                    if (undefined === this.facetCount[facetGroup.name][facet.name]) {
+                        this.facetCount[facetGroup.name][facet.name] = facet.count;
+                    }
+                });
+            });
+        }
+    }
+
+    // Retrieve count facet by filter and value
+    retrieveCountFacetByFilterAndValue(filter, value) {
+        if (this.facetCount[filter]) {
+            return this.facetCount[filter][value];
         }
     }
 }
