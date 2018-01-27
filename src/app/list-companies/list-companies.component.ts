@@ -1,6 +1,7 @@
-import {Component, ViewChild, Input} from '@angular/core';
-import {CompanyInterface} from '../company-interface';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
+import {RetrieveCompaniesService} from '../retrieve-companies.service';
+import {Company} from '../Model/company';
 
 @Component({
     selector: 'app-list-companies',
@@ -8,22 +9,29 @@ import {MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
     styleUrls: ['./list-companies.component.scss'],
 })
 
-export class ListCompaniesComponent {
-    companies: CompanyInterface[];
-    displayedColumns = ['siren', 'name', 'address', 'postal_code', 'city'];
-    dataSource: MatTableDataSource<CompanyInterface>;
+export class ListCompaniesComponent implements OnInit {
+    displayedColumns = ['siren', 'name', 'address', 'postal_code', 'city', 'category', 'activity', 'effectif', 'startDate'];
+    dataSource: MatTableDataSource<Company>;
 
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor() {
+    constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
+        this.retrieveCompaniesService.retrieveCompanies.subscribe((data: Company[]) => {
+            this.dataSource = new MatTableDataSource<Company>(data);
+            this.dataSource.sort = this.sort;
+            this.dataSource.paginator = this.paginator;
+        });
+
     }
 
-    @Input('companies')
-    set companiesParent(companies: CompanyInterface[]) {
-        this.companies = companies;
-        this.dataSource = new MatTableDataSource<CompanyInterface>(this.companies);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+    ngOnInit(): void {
+        this.retrieveCompaniesService.getCompanies();
+    }
+
+    onPageChange(event) {
+        if (event.pageSize * (event.pageIndex + 1) === event.length) {
+            this.retrieveCompaniesService.loadNextCompanies();
+        }
     }
 }

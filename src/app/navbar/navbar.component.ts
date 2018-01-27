@@ -1,4 +1,5 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {RetrieveCompaniesService} from "../retrieve-companies.service";
 
 @Component({
     selector: 'app-navbar',
@@ -6,21 +7,22 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
     styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+    filter: {};
     @Input() parameter: string;
-    @Output() filters = new EventEmitter();
+    pathToImg = 'assets/img/Open-Annuaire.jpg';
+    totalCompanies: number;
+    currentDate: string;
+    load = false;
 
-    filter;
-
-    public pathToImg = 'assets/img/Open-Annuaire.png';
-
-    constructor() {
-    }
-
-    onFilter(filter: string) {
-        this.filter = filter;
-        this.filters.emit({
-            name: this.parameter,
-            filter: this.filter,
-        });
+    constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
+        this.retrieveCompaniesService.totalCompanies.subscribe(
+            (total: number) => {
+                if (false === this.load) {
+                    this.currentDate = new Date().toLocaleDateString();
+                    this.totalCompanies = total;
+                    this.load = true;
+                }
+            }
+        );
     }
 }

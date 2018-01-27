@@ -1,19 +1,17 @@
-<app-navbar parameter="name" (filters)="onFilter($event)"></app-navbar>
+<app-navbar parameter="name"></app-navbar>
+
+<button mat-icon-button class="menu" (click)="toggleSidebar()">
+    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+</button>
 
 <!-- Start SideNav -->
 <mat-sidenav-container class="sidebar-container">
-    <mat-sidenav #sidenav mode="side" opened="true" class="sidebar">
-        <app-sidebar>
-        </app-sidebar>
+    <mat-sidenav #sidenav class="sidebar" [opened]="toggle" [mode]="(screenWidth > 992) ? 'side' : 'over'">
+        <app-sidebar></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <i class="fas fa-bars fa-2x" aria-hidden="true"></i>
-        </button>
-        <!-- Rajouter le router outlet -->
-        <app-list-companies [companies]="companies"></app-list-companies>
+        <ngx-loading-bar [includeSpinner]="false"></ngx-loading-bar>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
 <!-- END SideNav -->
-
-<app-export [companies]="companies"></app-export>

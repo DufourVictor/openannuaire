@@ -1,1 +1,38 @@
-<a href="#" (click)="exportCompanies()" class="mat-button">Export</a>
+<div id="export">
+    <h1>Format de fichiers plats</h1>
+    <div class="section-download-doc">
+        <p class="download-doc-type">CSV</p>
+        <button (click)="export('csv', true)" class="mat-button download-doc-button">
+            <i class="fas fa-download"></i>
+            Jeu de données entier
+        </button>
+        <button (click)="export('csv')" class="mat-button download-doc-button">
+            <i class="fas fa-download"></i>
+            Seulement les {{ totalCompanies }} enregistrements sélectionnés
+        </button>
+        <p class="download-doc-info">Le CSV utilise le point-virgule (;) comme séparateur.</p>
+    </div>
+
+    <div class="section-download-doc">
+        <p class="download-doc-type">JSON</p>
+        <button (click)="export('json', true)" class="mat-button download-doc-button">
+            <i class="fas fa-download"></i>
+            Jeu de données entier
+        </button>
+        <button (click)="export('json')" class="mat-button download-doc-button">
+            <i class="fas fa-download"></i>
+            Seulement les {{ totalCompanies }} enregistrements sélectionnés
+        </button>
+    </div>
+    <div class="section-download-doc">
+        <p class="download-doc-type">Excel</p>
+        <button (click)="export('xls', true)" class="mat-button download-doc-button">
+            <i class="fas fa-download"></i>
+            Jeu de données entier
+        </button>
+        <button (click)="export('xls')" class="mat-button download-doc-button">
+            <i class="fas fa-download"></i>
+            Seulement les {{ totalCompanies }} enregistrements sélectionnés
+        </button>
+    </div>
+</div>

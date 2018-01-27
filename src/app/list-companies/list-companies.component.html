@@ -7,7 +7,7 @@
 
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Nom de l'entreprise</mat-header-cell>
-            <mat-cell *matCellDef="let company"> {{company.names.best}}</mat-cell>
+            <mat-cell *matCellDef="let company"> {{company.name}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="address">
@@ -15,19 +15,39 @@
             <mat-cell *matCellDef="let company"> {{company.address}}</mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Ville</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.city}}</mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="postal_code">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Code postal</mat-header-cell>
             <mat-cell *matCellDef="let company"> {{company.postal_code}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="city">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Ville</mat-header-cell>
-            <mat-cell *matCellDef="let company"> {{company.city}}</mat-cell>
+        <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Catégorie</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.category}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="activity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Activité</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.activity}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="effectif">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Effectif</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.effectif}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="startDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Date de création</mat-header-cell>
+            <mat-cell *matCellDef="let company"> {{company.startDate}}</mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
-    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    <mat-paginator #paginator [pageSize]="10" (page)="onPageChange($event)" [pageSizeOptions]="[10]"></mat-paginator>
 </div>
