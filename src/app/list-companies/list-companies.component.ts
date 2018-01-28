@@ -20,6 +20,9 @@ export class ListCompaniesComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Company>();
 
         this.retrieveCompaniesService.retrieveCompanies.subscribe((data: Company[]) => {
+            if (this.paginator.length > data.length) {
+                this.paginator.pageIndex = 0;
+            }
             this.dataSource = new MatTableDataSource<Company>(data);
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
@@ -30,7 +33,8 @@ export class ListCompaniesComponent implements OnInit {
         this.retrieveCompaniesService.getCompanies();
     }
 
-    onPageChange(event) {
+    // Called when page changed in table
+    onPageChange(event): void {
         if (event.pageSize * (event.pageIndex + 1) === event.length) {
             this.retrieveCompaniesService.loadNextCompanies();
         }

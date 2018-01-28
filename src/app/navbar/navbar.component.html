@@ -7,7 +7,7 @@
         <div class="help">Aide <i class="fas fa-question-circle"></i></div>
     </mat-toolbar-row>
     <mat-toolbar-row class="row-second">
-        <div><b>{{ totalCompanies }}</b> entreprises au {{ currentDate }}</div>
+        <div class="total-companies"><b>{{ totalCompanies }}</b> entreprises au {{ currentDate }}</div>
         <nav mat-tab-nav-bar>
             <a mat-tab-link routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Tableau</a>
             <a mat-tab-link routerLink="/map" routerLinkActive="active">Carte</a>

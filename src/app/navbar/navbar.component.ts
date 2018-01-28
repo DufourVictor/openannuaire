@@ -8,7 +8,6 @@ import {RetrieveCompaniesService} from "../retrieve-companies.service";
 })
 export class NavbarComponent {
     filter: {};
-    @Input() parameter: string;
     pathToImg = 'assets/img/Open-Annuaire.jpg';
     totalCompanies: number;
     currentDate: string;

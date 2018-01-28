@@ -16,8 +16,8 @@
         <div class="sidebar-categ-title">
             <div><i class="fas fa-sitemap"></i> Activité (code APE)</div>
             <button id="activity" mat-icon-button class="categ-activity-button" (click)="toggleFilter('ape', !hideApe, ape)">
-                <i *ngIf="hideApe === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hideApe === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hideApe === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideApe === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideApe">
@@ -31,8 +31,8 @@
         <div class="sidebar-categ-title">
             <div><i class="far fa-arrow-alt-circle-up"></i> Catégories d'entreprises</div>
             <button id="type" mat-icon-button class="categ-type-button" (click)="toggleFilter('categories', !hideCategories, categories)">
-                <i *ngIf="hideCategories === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hideCategories === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hideCategories === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideCategories === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideCategories">
@@ -48,8 +48,8 @@
         <div class="sidebar-categ-title">
             <div><i class="far fa-map"></i> Département</div>
             <button id="county" mat-icon-button class="categ-county-button" (click)="toggleFilter('county', !hideCounty, county)">
-                <i *ngIf="hideCounty === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hideCounty === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hideCounty === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideCounty === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideCounty">
@@ -63,8 +63,8 @@
         <div class="sidebar-categ-title">
             <div><i class="fas fa-map-marker-alt"></i> Commune</div>
             <button id="city" mat-icon-button class="categ-city-button" (click)="toggleFilter('city', !hideCity, city)">
-                <i *ngIf="hideCity === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hideCity === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hideCity === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideCity === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideCity">
@@ -78,8 +78,8 @@
         <div class="sidebar-categ-title">
             <div><i class="far fa-calendar"></i> Année de création</div>
             <button id="creation" mat-icon-button class="categ-creation-button" (click)="toggleFilter('creation', !hideCreation, creation)">
-                <i *ngIf="hideCreation === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hideCreation === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hideCreation === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideCreation === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideCreation">
@@ -93,8 +93,8 @@
         <div class="sidebar-categ-title">
             <div><i class="fas fa-bookmark"></i> Statut juridique</div>
             <button id="legal" mat-icon-button class="categ-legal-button" (click)="toggleFilter('legal', !hideLegal, legal)">
-                <i *ngIf="hideLegal === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hideLegal === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hideLegal === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideLegal === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideLegal">
@@ -108,8 +108,8 @@
         <div class="sidebar-categ-title">
             <div><i class="fas fa-users"></i> Effectifs</div>
             <button id="effectives" mat-icon-button class="categ-effectives-button" (click)="toggleFilter('effectives', !hideEffectives, effectives)">
-                <i *ngIf="hideEffectives === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hideEffectives === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hideEffectives === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideEffectives === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideEffectives">
@@ -123,8 +123,8 @@
         <div class="sidebar-categ-title">
             <div><i class="fas fa-signal"></i> Chiffre d'affaires</div>
             <button id="revenues" mat-icon-button class="categ-revenues-button" (click)="toggleFilter('revenues', !hideRevenues, revenues)">
-                <i *ngIf="hideRevenues === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hideRevenues === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hideRevenues === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hideRevenues === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hideRevenues">
@@ -138,8 +138,8 @@
         <div class="sidebar-categ-title">
             <div><i class="fas fa-map"></i> Code Postal</div>
             <button id="postal" mat-icon-button class="categ-postal-button" (click)="toggleFilter('postal', !hidePostal, postal)">
-                <i *ngIf="hidePostal === true" class="fas fa-angle-double-down"></i>
-                <i *ngIf="hidePostal === false" class="fas fa-angle-double-up"></i>
+                <i *ngIf="hidePostal === true" class="fas fa-plus-circle"></i>
+                <i *ngIf="hidePostal === false" class="fas fa-minus-circle"></i>
             </button>
         </div>
         <div class="sidebar-categ-filter" [hidden]="hidePostal">

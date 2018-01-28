@@ -1,11 +1,12 @@
 @import '../../sass/variables';
 
-.navbar{
-  .mat-toolbar-row{
+.navbar {
+  .mat-toolbar-row {
     @media screen and (max-width: 992px) {
       display: flex;
       flex-direction: column;
-      &.row{
+
+      &.row {
         height: 200px;
         .help {
           position: absolute;
@@ -13,11 +14,64 @@
           top: 160px;
         }
       }
-      &.row-second{
+
+      &.row-second {
         height: 100px;
         justify-content: space-around;
         font-size: 16px;
-        padding: 20px 0 20px 0;
+
+        .mat-tab-nav-bar {
+          margin-top: 16px;
+          margin-left: 0;
+        }
+      }
+    }
+
+    .mat-form-field {
+      @media screen and (min-width: 993px) {
+        margin: 5px 20px 0 50px;
+      }
+
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+
+        .mat-form-field-infix {
+          border: 1px solid $second-font-color;
+          background-color: $main;
+          border-radius: 14px;
+          width: 350px;
+          padding: 0 40px 0 10px;
+
+          input {
+            border-radius: 14px;
+            height: 27px;
+            font-size: 15px;
+            margin-top: 0;
+            font-weight: 300;
+          }
+
+          .mat-form-field-label-wrapper {
+            position: absolute;
+            left: 10px;
+            width: 100%;
+            pointer-events: none;
+            top: -13px;
+            font-size: 15px;
+            font-weight: 300;
+          }
+
+          .search-icon {
+            font-size: 15px;
+            position: absolute;
+            top: 6px;
+            right: 15px;
+            cursor: pointer;
+          }
+        }
+
+        .mat-form-field-underline {
+          display: none;
+        }
       }
     }
   }
@@ -26,9 +80,33 @@
     background-color: $first-grey;
     color: $third-grey;
     padding-left: 50px;
+
     &-second {
       background-color: $second-grey;
       height: 50px;
+
+      .total-companies {
+        font-size: 19px;
+      }
+
+      .mat-tab-nav-bar {
+        border-bottom: none;
+        margin-left: 45px;
+
+        .mat-tab-links {
+          margin-top: 10px;
+
+          .mat-tab-link {
+            height: 40px;
+            font-weight: 300;
+            opacity: 1;
+
+            &.active {
+              background-color: $main;
+            }
+          }
+        }
+      }
     }
   }
 }
