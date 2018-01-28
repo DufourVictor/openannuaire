@@ -3,8 +3,8 @@
         <div class="sidebar-categ-title">
             <div class="result">
                 <span class="result-count">{{ totalCompanies }}</span>
-                <span *ngIf="totalCompanies > 0">résultats</span>
-                <span *ngIf="totalCompanies === 0">résultat</span>
+                <span *ngIf="totalCompanies > 1">résultats</span>
+                <span *ngIf="totalCompanies <= 1">résultat</span>
             </div>
             <button (click)="resetFilters([ape, categories, county, city, creation, legal, effectives, revenues, postal])"
                     mat-icon-button class="categ-result-button">

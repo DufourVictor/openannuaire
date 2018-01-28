@@ -19,15 +19,15 @@
 
 <mat-form-field *ngIf="type === 'selectObject'">
     <mat-chip-list #chipList>
-        <mat-chip *ngFor="let value of filter.values" [selectable]="selectable" [removable]="removable" (remove)="removeFilter(value)">
-            {{ value }}
+        <mat-chip *ngFor="let option of optionFilters" [selectable]="selectable" [removable]="removable" (remove)="removeOptionFilter(option)">
+            {{ option.name }}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
 
         <input #chip_input [matAutocomplete]="auto" class="multiple-select"/>
 
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addFilter($event.option.value)">
-            <mat-option *ngFor="let option of options" [value]="option.value">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addOptionFilter($event.option)">
+            <mat-option *ngFor="let option of options" [value]="option">
                 <span>{{ option.name }}</span>
             </mat-option>
         </mat-autocomplete>

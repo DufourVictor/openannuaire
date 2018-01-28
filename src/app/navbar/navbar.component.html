@@ -9,9 +9,9 @@
     <mat-toolbar-row class="row-second">
         <div><b>{{ totalCompanies }}</b> entreprises au {{ currentDate }}</div>
         <nav mat-tab-nav-bar>
-            <a mat-tab-link routerLink="/">Tableau</a>
-            <a mat-tab-link routerLink="/map">Carte</a>
-            <a mat-tab-link routerLink="/export">Export</a>
+            <a mat-tab-link routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Tableau</a>
+            <a mat-tab-link routerLink="/map" routerLinkActive="active">Carte</a>
+            <a mat-tab-link routerLink="/export" routerLinkActive="active">Export</a>
         </nav>
     </mat-toolbar-row>
 </mat-toolbar>

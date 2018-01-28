@@ -39,10 +39,8 @@ export class RetrieveCompaniesService {
         });
     }
 
-    getCompanies(refresh: boolean = true) {
-        if (refresh) {
-            this.companies = [];
-        }
+    getCompanies() {
+        this.companies = [];
         return this.http.get(this.url, {
             params: {
                 dataset: RetrieveCompaniesService.DATASET,
@@ -85,8 +83,9 @@ export class RetrieveCompaniesService {
         return this.getCompanies();
     }
 
+    // Load 100 next companies
     loadNextCompanies() {
-        this.start += RetrieveCompaniesService.ROWS;
-        this.getCompanies(false);
+        RetrieveCompaniesService.ROWS += RetrieveCompaniesService.ROWS;
+        this.getCompanies();
     }
 }
