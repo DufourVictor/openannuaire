@@ -5,9 +5,12 @@
     [title]="company.name"
     [latitude]="company.coordonnees[0]"
     [longitude]="company.coordonnees[1]">
-    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+    <agm-snazzy-info-window [maxWidth]="500" [closeWhenOthersOpen]="true">
     <ng-template>
-      <span>{{company.name}}</span>
+      <span><b><p class="blue">{{company.name}}</p></b></span>
+      <span><p class="grey">{{company.address}},{{company.postal_code}},{{company.city}}</p></span>
+      <span><p class="blue">{{company.activity}}</p></span>
+      <span><p class="blue">{{company.effectif}}</p></span>
     </ng-template>
     </agm-snazzy-info-window>
   </agm-marker>
