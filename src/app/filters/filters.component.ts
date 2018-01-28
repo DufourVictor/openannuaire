@@ -16,8 +16,8 @@ export class FiltersComponent implements OnInit {
     filter: Filter;
     facets: string[] = [];
     options: DefaultFilters[];
-    optionFilters: DefaultFilters[];
     timeout: number;
+    optionFilters: string[] = [];
 
     @Input() paramName: string;
     @Input() paramLabel: string;
@@ -33,7 +33,6 @@ export class FiltersComponent implements OnInit {
     ngOnInit(): void {
         this.filter = new Filter(this.paramName, this.operator, this.multiple, this.needName);
         this.options = DefaultFilters[this.optionIndex];
-        this.optionFilters = this.options;
     }
 
     // Emit events
@@ -63,5 +62,17 @@ export class FiltersComponent implements OnInit {
     removeFilter(value): void {
         this.filter.removeValue(value);
         this.onFilter();
+    }
+
+    // Add option filter
+    addOptionFilter(option): void {
+        this.addFilter(option.value.value);
+        this.optionFilters.push(option.value);
+    }
+
+    // Remove option filter
+    removeOptionFilter(option): void {
+        this.removeFilter(option.value);
+        this.optionFilters.splice(this.optionFilters.indexOf(option.name), 1);
     }
 }
