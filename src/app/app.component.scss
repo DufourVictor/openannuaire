@@ -8,5 +8,9 @@
     mat-sidenav-content {
         padding-top: 20px;
         padding-left: 20px;
+        height: calc(100% - 20px);
+        overflow: hidden;
     }
 }
+
+

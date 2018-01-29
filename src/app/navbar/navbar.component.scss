@@ -7,16 +7,23 @@
       flex-direction: column;
       &.row {
         height: 200px;
-        .help {
-          position: absolute;
-          left: 10px;
-          top: 160px;
+        .help{
+          padding-top: 10px;
+          a, a:visited{
+            color: $second-font-color;
+            text-decoration: none;
+          }
+          a:hover{
+            text-decoration: underline;
+
+          }
         }
       }
       &.row-second {
         height: 100px;
         justify-content: space-around;
         font-size: 16px;
+        padding-top: 10px;
         .mat-tab-nav-bar {
           margin-top: 16px;
           margin-left: 0;

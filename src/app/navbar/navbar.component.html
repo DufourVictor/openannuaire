@@ -4,7 +4,7 @@
 
         <app-filters paramName="name" paramLabel="Recherche" [multiple]="false" [needName]="false"></app-filters>
 
-        <div class="help">Aide <i class="fas fa-question-circle"></i></div>
+        <div class="help"><a routerLink="/help">Aide <i class="fas fa-question-circle"></i></a></div>
     </mat-toolbar-row>
     <mat-toolbar-row class="row-second">
         <div class="total-companies"><b>{{ totalCompanies }}</b> entreprises au {{ currentDate }}</div>

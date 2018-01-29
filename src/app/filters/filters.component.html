@@ -1,4 +1,4 @@
-<mat-form-field *ngIf="type === 'text'" [floatPlaceholder]="'never'">
+<mat-form-field *ngIf="type === 'text'">
     <mat-label *ngIf="multiple">{{ paramLabel }}</mat-label>
 
     <mat-chip-list #chipList *ngIf="multiple">
@@ -27,7 +27,8 @@
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
 
-        <input #chip_input [matAutocomplete]="auto" class="multiple-select"/>
+        <input #chip_input [matAutocomplete]="auto" class="multiple-select mat-select"
+               placeholder="Choisir une option"/>
 
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addOptionFilter($event.option)">
             <mat-option *ngFor="let option of options" [value]="option">

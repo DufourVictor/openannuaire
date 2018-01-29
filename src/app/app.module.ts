@@ -49,6 +49,7 @@ import {
 import {MapCompaniesComponent} from './map-companies/map-companies.component';
 import {ExportComponent} from './export/export.component';
 import { FiltersComponent } from './filters/filters.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
     declarations: [
@@ -59,6 +60,7 @@ import { FiltersComponent } from './filters/filters.component';
         MapCompaniesComponent,
         ExportComponent,
         FiltersComponent,
+        HelpComponent,
     ],
     imports: [
         BrowserModule,
