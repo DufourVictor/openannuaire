@@ -2,7 +2,7 @@
     <div class="sidebar-categ categ-header">
         <div class="sidebar-categ-title">
             <div class="result">
-                <span class="result-count">{{ totalCompanies }}</span>
+                <span class="result-count">{{ totalCompanies| number:'':'fr' }}</span>
                 <span *ngIf="totalCompanies > 1">résultats</span>
                 <span *ngIf="totalCompanies <= 1">résultat</span>
             </div>
@@ -23,7 +23,7 @@
         <div class="sidebar-categ-filter" [hidden]="hideApe">
             <app-filters paramName="apen700" paramLabel="Code APE" #ape></app-filters>
             <div class="categ-activity-button-count" *ngFor="let value of ape.filter.values">
-                {{ retrieveCountFacetByFilterAndValue(ape.paramName, value) }}
+                {{ retrieveCountFacetByFilterAndValue(ape.paramName, value)| number:'':'fr' }}
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
             <div class="filter-added">
                 <app-filters paramName="categorie" paramLabel="Catégories d'entreprises" type="selectObject" optionIndex="categories" #categories></app-filters>
                 <div class="categ-type-button-count" *ngFor="let value of categories.filter.values">
-                    {{ retrieveCountFacetByFilterAndValue(categories.paramName, value) }}
+                    {{ retrieveCountFacetByFilterAndValue(categories.paramName, value)| number:'':'fr' }}
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
         <div class="sidebar-categ-filter" [hidden]="hideCounty">
             <app-filters paramName="du" paramLabel="Département" type="selectObject" optionIndex="county" #county></app-filters>
             <div class="categ-county-button-count" *ngFor="let value of county.filter.values">
-                {{ retrieveCountFacetByFilterAndValue(county.paramName, value) }}
+                {{ retrieveCountFacetByFilterAndValue(county.paramName, value)| number:'':'fr' }}
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
         <div class="sidebar-categ-filter" [hidden]="hideCity">
             <app-filters paramName="libcom" paramLabel="Commune" optionIndex="cities" type="selectObject" #city></app-filters>
             <div class="categ-city-button-count" *ngFor="let value of city.filter.values">
-                {{ retrieveCountFacetByFilterAndValue(city.paramName, value) }}
+                {{ retrieveCountFacetByFilterAndValue(city.paramName, value)| number:'':'fr' }}
             </div>
         </div>
     </div>
@@ -85,7 +85,7 @@
         <div class="sidebar-categ-filter" [hidden]="hideCreation">
             <app-filters paramName="dcret" paramLabel="Année de création" #creation></app-filters>
             <div class="categ-creation-button-count" *ngFor="let value of creation.filter.values">
-                {{ retrieveCountFacetByFilterAndValue(creation.paramName, value) }}
+                {{ retrieveCountFacetByFilterAndValue(creation.paramName, value)| number:'':'fr' }}
             </div>
         </div>
     </div>
@@ -100,7 +100,7 @@
         <div class="sidebar-categ-filter" [hidden]="hideLegal">
             <app-filters paramName="nj" paramLabel="Statut juridique" optionIndex="legalStatus" type="selectObject" #legal></app-filters>
             <div class="categ-legal-button-count" *ngFor="let value of legal.filter.values">
-                {{ retrieveCountFacetByFilterAndValue(legal.paramName, value) }}
+                {{ retrieveCountFacetByFilterAndValue(legal.paramName, value)| number:'':'fr' }}
             </div>
         </div>
     </div>
@@ -115,7 +115,7 @@
         <div class="sidebar-categ-filter" [hidden]="hideEffectives">
             <app-filters paramName="tefet" paramLabel="Effectifs" optionIndex="effective" type="selectObject" #effectives></app-filters>
             <div class="categ-effectives-button-count" *ngFor="let value of effectives.filter.values">
-                {{ retrieveCountFacetByFilterAndValue(effectives.paramName, value) }}
+                {{ retrieveCountFacetByFilterAndValue(effectives.paramName, value)| number:'':'fr' }}
             </div>
         </div>
     </div>
@@ -130,7 +130,7 @@
         <div class="sidebar-categ-filter" [hidden]="hideRevenues">
             <app-filters paramName="tca" paramLabel="Chiffre d'affaires" optionIndex="turnover" type="selectObject" #revenues></app-filters>
             <div class="categ-revenues-button-count" *ngFor="let value of revenues.filter.values">
-                {{ retrieveCountFacetByFilterAndValue(revenues.paramName, value) }}
+                {{ retrieveCountFacetByFilterAndValue(revenues.paramName, value)| number:'':'fr' }}
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
         <div class="sidebar-categ-filter" [hidden]="hidePostal">
             <app-filters paramName="codpos" paramLabel="Code postal" #postal></app-filters>
             <div class="categ-postal-button-count" *ngFor="let value of postal.filter.values">
-                {{ retrieveCountFacetByFilterAndValue(postal.paramName, value) }}
+                {{ retrieveCountFacetByFilterAndValue(postal.paramName, value)| number:'':'fr' }}
             </div>
         </div>
     </div>
