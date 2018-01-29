@@ -3,3 +3,10 @@
     top: 12px;
     left: 10px;
 }
+
+.sidebar-container {
+    mat-sidenav-content {
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+}

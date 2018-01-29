@@ -1,5 +1,5 @@
-<mat-form-field *ngIf="type === 'text'">
-    <mat-label>{{ paramLabel }}</mat-label>
+<mat-form-field *ngIf="type === 'text'" [floatPlaceholder]="'never'">
+    <mat-label *ngIf="multiple">{{ paramLabel }}</mat-label>
 
     <mat-chip-list #chipList *ngIf="multiple">
         <mat-chip *ngFor="let value of filter.values" [selectable]="selectable" [removable]="removable" (remove)="removeFilter(value)">
@@ -14,7 +14,10 @@
         />
     </mat-chip-list>
 
-    <input #single_input matInput *ngIf="!multiple" (change)="addFilter(single_input.value)" class="search" placeholder="Nom de l'entreprise"/>
+    <input #single_input matInput *ngIf="!multiple" (change)="addFilter(single_input.value)"
+           placeholder="Nom de l'entreprise, n° de SIRET, activité..."
+    />
+    <i *ngIf="!multiple" class="fa fa-search search-icon"></i>
 </mat-form-field>
 
 <mat-form-field *ngIf="type === 'selectObject'">
