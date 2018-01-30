@@ -8,7 +8,8 @@
         </button>
         <button (click)="export('csv')" class="mat-button download-doc-button">
             <i class="fas fa-download"></i>
-            Seulement les {{ totalCompanies| number:'':'fr' }} enregistrements sélectionnés
+            <span *ngIf="totalCompanies > 1">Seulement les {{ totalCompanies| number:'':'fr' }} enregistrements sélectionnés</span>
+            <span *ngIf="totalCompanies <= 1">Seulement les {{ totalCompanies| number:'':'fr' }} enregistrement sélectionné</span>
         </button>
         <p class="download-doc-info">Le CSV utilise le point-virgule (;) comme séparateur.</p>
     </div>
@@ -21,7 +22,8 @@
         </button>
         <button (click)="export('json')" class="mat-button download-doc-button">
             <i class="fas fa-download"></i>
-            Seulement les {{ totalCompanies | number:'':'fr' }} enregistrements sélectionnés
+            <span *ngIf="totalCompanies > 1">Seulement les {{ totalCompanies| number:'':'fr' }} enregistrements sélectionnés</span>
+            <span *ngIf="totalCompanies <= 1">Seulement les {{ totalCompanies| number:'':'fr' }} enregistrement sélectionné</span>
         </button>
     </div>
     <div class="section-download-doc">
@@ -32,7 +34,8 @@
         </button>
         <button (click)="export('xls')" class="mat-button download-doc-button">
             <i class="fas fa-download"></i>
-            Seulement les {{ totalCompanies| number:'':'fr' }} enregistrements sélectionnés
+            <span *ngIf="totalCompanies > 1">Seulement les {{ totalCompanies| number:'':'fr' }} enregistrements sélectionnés</span>
+            <span *ngIf="totalCompanies <= 1">Seulement les {{ totalCompanies| number:'':'fr' }} enregistrement sélectionné</span>
         </button>
     </div>
 </div>
