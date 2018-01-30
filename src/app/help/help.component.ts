@@ -11,5 +11,4 @@ export class HelpComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
