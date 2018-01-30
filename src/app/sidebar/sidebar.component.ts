@@ -76,6 +76,7 @@ export class SidebarComponent {
 
     // Reset all filters
     resetFilters(inputs): void {
+        this.hideApe = true;
         this.hideCategories = true;		
         this.hideCounty = true;		
         this.hideCity = true;		
