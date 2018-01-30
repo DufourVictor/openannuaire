@@ -13,6 +13,8 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import * as myGlobals from './globals';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import localeFr from '@angular/common/locales/fr';
+import {registerLocaleData} from '@angular/common';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -50,6 +52,7 @@ import {MapCompaniesComponent} from './map-companies/map-companies.component';
 import {ExportComponent} from './export/export.component';
 import { FiltersComponent } from './filters/filters.component';
 import { HelpComponent } from './help/help.component';
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
     declarations: [
