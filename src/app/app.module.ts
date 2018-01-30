@@ -9,10 +9,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AgmCoreModule} from '@agm/core';
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import {AgmSnazzyInfoWindowModule} from '@agm/snazzy-info-window';
 import * as myGlobals from './globals';
-import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
-import { LoadingBarModule } from '@ngx-loading-bar/core';
+import {LoadingBarHttpClientModule} from '@ngx-loading-bar/http-client';
+import {LoadingBarModule} from '@ngx-loading-bar/core';
 import localeFr from '@angular/common/locales/fr';
 import {registerLocaleData} from '@angular/common';
 import {
@@ -54,6 +54,7 @@ import { FiltersComponent } from './filters/filters.component';
 import { HelpComponent } from './help/help.component';
 registerLocaleData(localeFr, 'fr');
 
+registerLocaleData(localeFr, 'fr');
 @NgModule({
     declarations: [
         AppComponent,

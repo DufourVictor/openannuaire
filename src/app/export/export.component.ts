@@ -13,11 +13,10 @@ export class ExportComponent implements OnInit {
     private urlExport = 'https://data.opendatasoft.com/explore/dataset/sirene@public/download/?timezone=Europe/Berlin&use_labels_for_header=true&format=';
     companies: Company[];
     totalCompanies: number;
+    extension: string;
+    loaded: boolean;
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService, private exportService: ExportService) {
-        this.retrieveCompaniesService.retrieveCompanies.subscribe(
-            (companies: Company[]) => this.companies = companies
-        );
         this.retrieveCompaniesService.totalCompanies.subscribe(
             (total: number) => this.totalCompanies = total
         );
@@ -27,28 +26,38 @@ export class ExportComponent implements OnInit {
         this.retrieveCompaniesService.getCompanies();
     }
 
+    // Export companies
     export(extension, full = false) {
+        this.loaded = false;
+        this.extension = extension;
+
+        if (!full) {
+            this.retrieveCompaniesService.loadNextCompanies(this.totalCompanies);
+            this.retrieveCompaniesService.retrieveCompanies.subscribe(
+                (companies: Company[]) => {
+                    if (!this.loaded) {
+                        this.loaded = true;
+                        this.companies = companies;
+                        this.retrieveExport(this.extension);
+                    }
+                }
+            );
+        } else {
+            window.location.href = this.urlExport + extension;
+        }
+    }
+
+    // Retrieve good function of export by extension name
+    retrieveExport(extension) {
         switch (extension) {
             case Extensions.CSV:
-                if (false === full) {
-                    this.exportService.exportCsv(this.companies);
-                } else {
-                    window.location.href = this.urlExport + Extensions.CSV;
-                }
+                this.exportService.exportCsv(this.companies);
                 break;
             case Extensions.JSON:
-                if (false === full) {
-                    this.exportService.exportJson(this.companies);
-                } else {
-                    window.location.href = this.urlExport + Extensions.JSON;
-                }
+                this.exportService.exportJson(this.companies);
                 break;
             case Extensions.XLS:
-                if (false === full) {
-                    this.exportService.exportExcel(this.companies);
-                } else {
-                    window.location.href = this.urlExport + Extensions.XLS;
-                }
+                this.exportService.exportExcel(this.companies);
                 break;
         }
     }

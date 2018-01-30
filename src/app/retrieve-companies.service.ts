@@ -12,7 +12,7 @@ import {Subscription} from "rxjs";
 export class RetrieveCompaniesService {
     static DATASET = 'sirene';
     static LANG = 'fr';
-    static ROWS = 100;
+    static MAX_ROWS = 10000;
 
     private url = 'https://public.opendatasoft.com/api/records/1.0/search/';
     companies: Company[] = [];
@@ -23,7 +23,8 @@ export class RetrieveCompaniesService {
     facetGroupsCompanies = new EventEmitter();
     filters: Filter[] = [];
     facets: string[] = [];
-    start = 0;
+    start: number = 0;
+    rows: number = 100;
 
     constructor(private http: HttpClient, private query: QueryBuilderService) {
         this.filterCompanies.subscribe((filter: Filter) => {
@@ -45,7 +46,7 @@ export class RetrieveCompaniesService {
             params: {
                 dataset: RetrieveCompaniesService.DATASET,
                 lang: RetrieveCompaniesService.LANG,
-                rows: RetrieveCompaniesService.ROWS.toString(),
+                rows: this.rows.toString(),
                 facet: this.facets,
                 start: this.start.toString(),
                 q: this.query.queryBuilder(this.filters),
@@ -83,9 +84,16 @@ export class RetrieveCompaniesService {
         return this.getCompanies();
     }
 
-    // Load 100 next companies
-    loadNextCompanies() {
-        RetrieveCompaniesService.ROWS += RetrieveCompaniesService.ROWS;
+    // Load 100 next companies or number of rows
+    loadNextCompanies(rows: number = null) {
+        if (null !== rows) {
+            if (RetrieveCompaniesService.MAX_ROWS <= rows) {
+                rows = RetrieveCompaniesService.MAX_ROWS;
+            }
+            this.rows = rows;
+        } else {
+            this.rows += this.rows;
+        }
         this.getCompanies();
     }
 }
