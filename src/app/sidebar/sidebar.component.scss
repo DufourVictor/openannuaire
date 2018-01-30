@@ -59,6 +59,12 @@
                 }
                 &-activity {
                     border-left: 6px solid $first-gradient;
+                    .mat-form-field-ripple{
+                        background-color: $first-gradient;
+                    }
+                    .mat-focused .mat-form-field-label{
+                        color: $first-gradient;
+                    }
                     &-button {
                         &:hover{
                             color: $first-gradient
@@ -119,6 +125,12 @@
                 }
                 &-creation {
                     border-left: 6px solid $fifth-gradient;
+                    .mat-form-field-ripple {
+                        background-color: $fifth-gradient;
+                    }
+                    .mat-focused .mat-form-field-label {
+                        color: $fifth-gradient;
+                    }
                     &-button {
                         &:hover {
                             color: $fifth-gradient;
@@ -179,6 +191,12 @@
                 }
                 &-postal {
                     border-left: 6px solid $nineth-gradient;
+                    .mat-form-field-ripple {
+                        background-color: $nineth-gradient;
+                    }
+                    .mat-focused .mat-form-field-label {
+                        color: $nineth-gradient;
+                    }
                     &-button {
                         &:hover {
                             color: $nineth-gradient;
