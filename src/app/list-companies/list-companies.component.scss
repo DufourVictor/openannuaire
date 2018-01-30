@@ -40,7 +40,12 @@
 
 .mat-table {
     overflow: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
 }
+
 
 .mat-header-row, .mat-row{
     min-width: 1000px;

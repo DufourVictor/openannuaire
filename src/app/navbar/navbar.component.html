@@ -1,6 +1,6 @@
 <mat-toolbar role="header" class="navbar">
     <mat-toolbar-row class="row">
-        <img [src]="pathToImg" alt="openannuaire">
+        <a routerLink="/"><img [src]="pathToImg" alt="openannuaire"></a>
 
         <app-filters paramName="name" paramLabel="Recherche" [multiple]="false" [needName]="false"></app-filters>
 

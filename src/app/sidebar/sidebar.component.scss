@@ -125,6 +125,12 @@
                 }
                 &-creation {
                     border-left: 6px solid $fifth-gradient;
+                    .mat-form-field-ripple {
+                        background-color: $fifth-gradient;
+                    }
+                    .mat-focused .mat-form-field-label {
+                        color: $fifth-gradient;
+                    }
                     &-button {
                         &:hover {
                             color: $fifth-gradient;

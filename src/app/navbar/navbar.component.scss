@@ -3,19 +3,36 @@
 .navbar {
   .mat-toolbar-row {
     @media screen and (max-width: 992px) {
+      app-filters{
+        text-align: center;
+        width: 100%;
+        .mat-form-field-infix{
+          width: 100% !important;
+        }
+        .mat-form-field-placeholder-wrapper{
+          width: 80% !important;
+        }
+      }
+    }
+    &.row{
+      justify-content: space-between;
+      .help {
+        @media screen and (max-width: 992px) {
+          padding: 0 10px;
+        }
+        a, a:visited {
+          color: $second-font-color;
+          text-decoration: none;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+    }
+    @media screen and (max-width: 992px) {
       display: flex;
       flex-direction: column;
       &.row {
         height: 200px;
-        .help{
-          padding-top: 10px;
-          a, a:visited{
-            color: $second-font-color;
-            text-decoration: none;
-          }
-          a:hover{
-            text-decoration: underline;
-          }
         }
       }
       &.row-second {
@@ -79,12 +96,26 @@
     &-second {
       background-color: $second-grey;
       height: 50px;
+      @media screen and (max-width: 992px) {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding-top: 20px;
+      }
       .total-companies {
         font-size: 19px;
+        @media screen and (max-width: 992px) {
+          white-space: normal;
+          text-align: center;
+          margin-bottom: 5px;
+        }
       }
       .mat-tab-nav-bar {
         border-bottom: none;
         margin-left: 45px;
+        @media screen and (max-width: 992px) {
+          margin-left: 0;
+        }
         .mat-tab-links {
           margin-top: 10px;
           .mat-tab-link {

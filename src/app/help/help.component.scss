@@ -1,4 +1,8 @@
 #help{
-    line-height: 1.5rem;
     padding-right: 20px;
+    overflow: auto;
+    height: 100%;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
