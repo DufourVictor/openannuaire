@@ -51,6 +51,7 @@ import {
 import {MapCompaniesComponent} from './map-companies/map-companies.component';
 import {ExportComponent} from './export/export.component';
 import { FiltersComponent } from './filters/filters.component';
+import { HelpComponent } from './help/help.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -62,6 +63,7 @@ registerLocaleData(localeFr, 'fr');
         MapCompaniesComponent,
         ExportComponent,
         FiltersComponent,
+        HelpComponent,
     ],
     imports: [
         BrowserModule,
