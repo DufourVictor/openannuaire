@@ -76,6 +76,14 @@ export class SidebarComponent {
 
     // Reset all filters
     resetFilters(inputs): void {
+        this.hideCategories = true;		
+        this.hideCounty = true;		
+        this.hideCity = true;		
+        this.hideCreation = true;		
+        this.hideLegal = true;		
+        this.hideEffectives = true;		
+        this.hideRevenues = true;		
+        this.hidePostal = true;
         inputs.forEach((input, key) => {
             this.clearFilter(input, key + 1 === inputs.length);
         });
@@ -84,7 +92,6 @@ export class SidebarComponent {
     // Clear value of one filter
     clearFilter(input, refresh = false): void {
         input.filter.values = [];
-
         if (refresh) {
             this.retrieveCompaniesService.getCompanies();
         }
