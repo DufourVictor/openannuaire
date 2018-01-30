@@ -12,6 +12,7 @@ import {Subscription} from "rxjs";
 export class RetrieveCompaniesService {
     static DATASET = 'sirene';
     static LANG = 'fr';
+    static MAX_ROWS = 10000;
 
     private url = 'https://public.opendatasoft.com/api/records/1.0/search/';
     companies: Company[] = [];
@@ -86,10 +87,13 @@ export class RetrieveCompaniesService {
     // Load 100 next companies or number of rows
     loadNextCompanies(rows: number = null) {
         if (null !== rows) {
+            if (RetrieveCompaniesService.MAX_ROWS <= rows) {
+                rows = RetrieveCompaniesService.MAX_ROWS;
+            }
             this.rows = rows;
         } else {
             this.rows += this.rows;
         }
-        this.getCompanies()
+        this.getCompanies();
     }
 }

@@ -10,6 +10,7 @@ import {Extensions} from '../Enums/extensions.enum';
     styleUrls: ['./export.component.scss']
 })
 export class ExportComponent implements OnInit {
+    private urlExport = 'https://data.opendatasoft.com/explore/dataset/sirene@public/download/?timezone=Europe/Berlin&use_labels_for_header=true&format=';
     companies: Company[];
     totalCompanies: number;
     extension: string;
@@ -41,6 +42,8 @@ export class ExportComponent implements OnInit {
                     }
                 }
             );
+        } else {
+            window.location.href = this.urlExport + extension;
         }
     }
 
