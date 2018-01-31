@@ -10,22 +10,27 @@ import {HttpClient} from '@angular/common/http';
 })
 @Injectable()
 export class MapCompaniesComponent implements OnInit {
-
     companies: Company[];
     styles;
-
-    title: 'Google Map';
     lat: number;
     lng: number;
+    totalCompanies: number;
+    loaded: boolean = false;
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService, private http: HttpClient) {
-        this.retrieveCompaniesService.retrieveCompanies.subscribe((companies: Company[]) => {
-            this.companies = companies;
+        this.retrieveCompaniesService.totalCompanies.subscribe((total: number) => {
+            this.totalCompanies = total;
+
+            if (this.loaded) {
+                this.loadCompanies();
+            }
         });
     }
 
-    ngOnInit() {
-        this.retrieveCompaniesService.getCompanies();
+    ngOnInit(): void {
+        this.retrieveCompaniesService.loadNextCompanies(this.retrieveCompaniesService.maxRows);
+        this.loadCompanies();
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((pos) => {
                 this.lat = pos.coords.latitude;
@@ -35,6 +40,23 @@ export class MapCompaniesComponent implements OnInit {
         this.http.get('./assets/mapstyle.json').subscribe(data => {
           this.styles = data['styles'];
         });
+    }
 
+    // Load companies on map
+    loadCompanies(): void {
+        if (this.loaded) {
+            this.loaded = false;
+            this.retrieveCompaniesService.loadNextCompanies(this.retrieveCompaniesService.nhits);
+        }
+        this.retrieveCompaniesService.retrieveCompanies.subscribe((companies: Company[]) => {
+            this.companies = [];
+            companies.forEach((company: Company) => {
+                if (undefined !== company.coordonnees) {
+                    this.companies.push(company);
+                }
+            });
+
+            this.loaded = !this.loaded;
+        });
     }
 }
