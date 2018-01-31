@@ -3,8 +3,8 @@
 
     <mat-chip-list #chipList *ngIf="multiple">
         <mat-chip *ngFor="let value of filter.values" [selectable]="selectable" [removable]="removable" (remove)="removeFilter(value)">
-            {{ value }}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            {{ value }}
         </mat-chip>
         <input #chip_input
                [matChipInputFor]="chipList"
@@ -21,14 +21,15 @@
 </mat-form-field>
 
 <mat-form-field *ngIf="type === 'selectObject'">
-    <mat-chip-list #chipList>
+    <mat-label *ngIf="multiple">{{ paramLabel }}</mat-label>
+    <mat-chip-list #chipList *ngIf="multiple">
         <mat-chip *ngFor="let option of optionFilters" [selectable]="selectable" [removable]="removable" (remove)="removeOptionFilter(option)">
-            {{ option.name }}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            {{ option.name }}
         </mat-chip>
 
         <input #chip_input [matAutocomplete]="auto" class="multiple-select mat-select"
-               placeholder="Choisir une option"/>
+               />
 
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addOptionFilter($event.option)">
             <mat-option *ngFor="let option of options" [value]="option">
@@ -36,4 +37,5 @@
             </mat-option>
         </mat-autocomplete>
     </mat-chip-list>
+    <i *ngIf="!multiple" class="fa fa-search search-icon"></i>
 </mat-form-field>

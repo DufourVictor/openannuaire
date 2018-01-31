@@ -3,7 +3,7 @@
 #export{
     overflow: auto;
     height: 100%;
-    &::-webkit-scrollbar {
+    &::-webkit-scrollbar, &::-ms- {
         display: none;
     }
     h1{
@@ -12,8 +12,7 @@
     .section-download-doc{
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
+        justify-content: flex-start;
         align-items: center;
         width: 100%;
         margin-top: 15px;
@@ -30,7 +29,7 @@
                 width: 50px;
             }
             &-type, &-button{
-                flex: 1 1 auto;
+                flex: 0 1 auto;
                 align-self: stretch;
                 text-align: left;
                 margin: 0;
@@ -39,7 +38,7 @@
                 color : $main-font-color;
                 font-size: 18px;
                 white-space: normal;
-                @media screen and (max-width: 992px) {
+                @media screen and (max-width: 1200px) {
                     padding: 0;
                 }
             }
