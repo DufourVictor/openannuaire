@@ -35,6 +35,9 @@
                 .count-cards{
                     padding-top: 20px;
                     margin-left: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
                     div{
                         margin: 5px 0;
                     }

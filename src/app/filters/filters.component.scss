@@ -5,7 +5,7 @@
         display: none;
     }
     &#show {
-        display: block;
+        display: flex;
     }
     input {
         flex: 0 0 0;
@@ -20,17 +20,21 @@
         }
     }
 
-    .mat-chip{
+
+}
+.ng-star-inserted{
+    .mat-chip {
         background-color: transparent !important;
         box-shadow: none !important;
         margin: 0 !important;
         padding-right: 0 !important;
         padding-left: 0 !important;
-        width: 95%;
+        width: 100%;
+        max-width: 170px;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        &-remove{
+        &-remove {
             margin-left: 0;
             margin-right: 5px;
         }
