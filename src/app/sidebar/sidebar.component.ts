@@ -38,7 +38,7 @@ export class SidebarComponent {
     }
 
     // Display filter
-    toggleFilter(filter, visible, input): void {
+    toggleFilter(filter, visible): void {
         switch (filter) {
             case Filters.APE:
                 this.hideApe = visible;
@@ -67,10 +67,6 @@ export class SidebarComponent {
             case Filters.POSTAL:
                 this.hidePostal = visible;
                 break;
-        }
-
-        if (true === visible && 0 !== input.filter.values.length) {
-            this.clearFilter(input, true);
         }
     }
 
@@ -117,5 +113,6 @@ export class SidebarComponent {
         if (this.facetCount[filter]) {
             return this.facetCount[filter][value];
         }
+        return 0;
     }
 }

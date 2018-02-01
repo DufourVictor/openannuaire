@@ -1,6 +1,12 @@
 @import '../../sass/variables';
 
 .mat-form-field {
+    &#hide {
+        display: none;
+    }
+    &#show {
+        display: block;
+    }
     input {
         flex: 0 0 0;
         &.multiple-select {

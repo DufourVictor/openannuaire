@@ -26,6 +26,7 @@ export class FiltersComponent implements OnInit {
     @Input() operator = ':';
     @Input() multiple = true;
     @Input() optionIndex: string;
+    @Input() display: boolean;
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
     }

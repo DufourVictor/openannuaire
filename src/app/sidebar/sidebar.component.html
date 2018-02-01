@@ -15,13 +15,13 @@
     <div class="sidebar-categ categ-activity">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-sitemap"></i> Activité (code APE)</div>
-            <button id="activity" mat-icon-button class="categ-activity-button" (click)="toggleFilter('ape', !hideApe, ape)">
+            <button id="activity" mat-icon-button class="categ-activity-button" (click)="toggleFilter('ape', !hideApe)">
                 <i *ngIf="hideApe === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideApe === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hideApe">
-            <app-filters paramName="apen700" paramLabel="Code APE" #ape></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="apen700" paramLabel="Code APE" [display]="hideApe" #ape></app-filters>
             <div class="count-cards">
                 <div class="categ-activity-button-count" *ngFor="let value of ape.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(ape.paramName, value)| number:'':'fr' }}
@@ -32,32 +32,30 @@
     <div class="sidebar-categ categ-type">
         <div class="sidebar-categ-title">
             <div><i class="far fa-arrow-alt-circle-up"></i> Catégories d'entreprises</div>
-            <button id="type" mat-icon-button class="categ-type-button" (click)="toggleFilter('categories', !hideCategories, categories)">
+            <button id="type" mat-icon-button class="categ-type-button" (click)="toggleFilter('categories', !hideCategories)">
                 <i *ngIf="hideCategories === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideCategories === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hideCategories">
-
-            <app-filters paramName="categorie" paramLabel="Catégories d'entreprises" type="selectObject" optionIndex="categories" #categories></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="categorie" paramLabel="Catégories d'entreprises" type="selectObject" optionIndex="categories" [display]="hideCategories" #categories></app-filters>
             <div class="count-cards">
                 <div class="categ-type-button-count" *ngFor="let value of categories.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(categories.paramName, value)| number:'':'fr' }}
                 </div>
             </div>
-
         </div>
     </div>
     <div class="sidebar-categ categ-county">
         <div class="sidebar-categ-title">
             <div><i class="far fa-map"></i> Département</div>
-            <button id="county" mat-icon-button class="categ-county-button" (click)="toggleFilter('county', !hideCounty, county)">
+            <button id="county" mat-icon-button class="categ-county-button" (click)="toggleFilter('county', !hideCounty)">
                 <i *ngIf="hideCounty === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideCounty === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hideCounty">
-            <app-filters paramName="du" paramLabel="Département" type="selectObject" optionIndex="county" #county></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="du" paramLabel="Département" type="selectObject" optionIndex="county" [display]="hideCounty" #county></app-filters>
             <div class="count-cards">
                 <div class="categ-county-button-count" *ngFor="let value of county.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(county.paramName, value)| number:'':'fr' }}
@@ -68,13 +66,13 @@
     <div class="sidebar-categ categ-city">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-map-marker-alt"></i> Commune</div>
-            <button id="city" mat-icon-button class="categ-city-button" (click)="toggleFilter('city', !hideCity, city)">
+            <button id="city" mat-icon-button class="categ-city-button" (click)="toggleFilter('city', !hideCity)">
                 <i *ngIf="hideCity === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideCity === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hideCity">
-            <app-filters paramName="libcom" paramLabel="Commune" optionIndex="cities" type="selectObject" #city></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="libcom" paramLabel="Commune" optionIndex="cities" type="selectObject" [display]="hideCity" #city></app-filters>
             <div class="count-cards">
                 <div class="categ-city-button-count" *ngFor="let value of city.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(city.paramName, value)| number:'':'fr' }}
@@ -85,13 +83,13 @@
     <div class="sidebar-categ categ-creation">
         <div class="sidebar-categ-title">
             <div><i class="far fa-calendar"></i> Année de création</div>
-            <button id="creation" mat-icon-button class="categ-creation-button" (click)="toggleFilter('creation', !hideCreation, creation)">
+            <button id="creation" mat-icon-button class="categ-creation-button" (click)="toggleFilter('creation', !hideCreation)">
                 <i *ngIf="hideCreation === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideCreation === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hideCreation">
-            <app-filters paramName="dcret" paramLabel="Année de création" #creation></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="dcret" paramLabel="Année de création" [display]="hideCreation" #creation></app-filters>
             <div class="count-cards">
                 <div class="categ-creation-button-count" *ngFor="let value of creation.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(creation.paramName, value)| number:'':'fr' }}
@@ -102,13 +100,13 @@
     <div class="sidebar-categ categ-legal">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-bookmark"></i> Statut juridique</div>
-            <button id="legal" mat-icon-button class="categ-legal-button" (click)="toggleFilter('legal', !hideLegal, legal)">
+            <button id="legal" mat-icon-button class="categ-legal-button" (click)="toggleFilter('legal', !hideLegal)">
                 <i *ngIf="hideLegal === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideLegal === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hideLegal">
-            <app-filters paramName="nj" paramLabel="Statut juridique" optionIndex="legalStatus" type="selectObject" #legal></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="nj" paramLabel="Statut juridique" optionIndex="legalStatus" type="selectObject" [display]="hideLegal" #legal></app-filters>
             <div class="count-cards">
                 <div class="categ-legal-button-count" *ngFor="let value of legal.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(legal.paramName, value)| number:'':'fr' }}
@@ -119,13 +117,13 @@
     <div class="sidebar-categ categ-effectives">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-users"></i> Effectifs</div>
-            <button id="effectives" mat-icon-button class="categ-effectives-button" (click)="toggleFilter('effectives', !hideEffectives, effectives)">
+            <button id="effectives" mat-icon-button class="categ-effectives-button" (click)="toggleFilter('effectives', !hideEffectives)">
                 <i *ngIf="hideEffectives === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideEffectives === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hideEffectives">
-            <app-filters paramName="tefet" paramLabel="Effectifs" optionIndex="effective" type="selectObject" #effectives></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="tefet" paramLabel="Effectifs" optionIndex="effective" type="selectObject" [display]="hideEffectives" #effectives></app-filters>
             <div class="count-cards">
                 <div class="categ-effectives-button-count" *ngFor="let value of effectives.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(effectives.paramName, value)| number:'':'fr' }}
@@ -136,13 +134,13 @@
     <div class="sidebar-categ categ-revenues">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-signal"></i> Chiffre d'affaires</div>
-            <button id="revenues" mat-icon-button class="categ-revenues-button" (click)="toggleFilter('revenues', !hideRevenues, revenues)">
+            <button id="revenues" mat-icon-button class="categ-revenues-button" (click)="toggleFilter('revenues', !hideRevenues)">
                 <i *ngIf="hideRevenues === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hideRevenues === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hideRevenues">
-            <app-filters paramName="tca" paramLabel="Chiffre d'affaires" optionIndex="turnover" type="selectObject" #revenues></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="tca" paramLabel="Chiffre d'affaires" optionIndex="turnover" type="selectObject" [display]="hideRevenues" #revenues></app-filters>
             <div class="count-cards">
                 <div class="categ-revenues-button-count" *ngFor="let value of revenues.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(revenues.paramName, value)| number:'':'fr' }}
@@ -153,13 +151,13 @@
     <div class="sidebar-categ categ-postal">
         <div class="sidebar-categ-title">
             <div><i class="fas fa-map"></i> Code Postal</div>
-            <button id="postal" mat-icon-button class="categ-postal-button" (click)="toggleFilter('postal', !hidePostal, postal)">
+            <button id="postal" mat-icon-button class="categ-postal-button" (click)="toggleFilter('postal', !hidePostal)">
                 <i *ngIf="hidePostal === true" class="fas fa-angle-double-down"></i>
                 <i *ngIf="hidePostal === false" class="fas fa-angle-double-up"></i>
             </button>
         </div>
-        <div class="sidebar-categ-filter" [hidden]="hidePostal">
-            <app-filters paramName="codpos" paramLabel="Code postal" #postal></app-filters>
+        <div class="sidebar-categ-filter">
+            <app-filters paramName="codpos" paramLabel="Code postal" [display]="hidePostal" #postal></app-filters>
             <div class="count-cards">
                 <div class="categ-postal-button-count" *ngFor="let value of postal.filter.values">
                     {{ retrieveCountFacetByFilterAndValue(postal.paramName, value)| number:'':'fr' }}
