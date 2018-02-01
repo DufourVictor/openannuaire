@@ -14,6 +14,7 @@ export class RetrieveCompaniesService {
     static LANG = 'fr';
     static MAX_ROWS = 10000;
     static DEFAULT_ROWS = 100;
+    static START = 0;
 
     private url = 'https://public.opendatasoft.com/api/records/1.0/search/';
     companies: Company[] = [];
@@ -24,7 +25,6 @@ export class RetrieveCompaniesService {
     facetGroupsCompanies = new EventEmitter();
     filters: Filter[] = [];
     facets: string[] = [];
-    start: number = 0;
     rows: number = 100;
     nhits: number;
 
@@ -50,7 +50,7 @@ export class RetrieveCompaniesService {
                 lang: RetrieveCompaniesService.LANG,
                 rows: this.rows.toString(),
                 facet: this.facets,
-                start: this.start.toString(),
+                start: RetrieveCompaniesService.START.toString(),
                 q: this.query.queryBuilder(this.filters),
             },
         }).map(
@@ -82,7 +82,6 @@ export class RetrieveCompaniesService {
     reloadCompanies(reload = false): Subscription {
         if (reload) {
             this.companies = [];
-            this.start = 0;
         }
         return this.getCompanies();
     }
