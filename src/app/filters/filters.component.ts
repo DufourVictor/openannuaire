@@ -26,6 +26,7 @@ export class FiltersComponent implements OnInit {
     @Input() operator = ':';
     @Input() multiple = true;
     @Input() optionIndex: string;
+    @Input() display: boolean;
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
     }
@@ -74,5 +75,10 @@ export class FiltersComponent implements OnInit {
     removeOptionFilter(option): void {
         this.removeFilter(option.value);
         this.optionFilters.splice(this.optionFilters.indexOf(option.name), 1);
+    }
+
+    // Format filter text
+    formatDisplayFilter(value): void {
+        return value.length > 22 ? value.slice(0, 23) + '...' : value;
     }
 }

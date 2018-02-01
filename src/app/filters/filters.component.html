@@ -1,11 +1,7 @@
-<mat-form-field *ngIf="type === 'text'">
+<mat-form-field *ngIf="type === 'text'" [id]="display ? 'hide' : 'show'">
     <mat-label *ngIf="multiple">{{ paramLabel }}</mat-label>
 
     <mat-chip-list #chipList *ngIf="multiple">
-        <mat-chip *ngFor="let value of filter.values" [selectable]="selectable" [removable]="removable" (remove)="removeFilter(value)">
-            {{ value }}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-        </mat-chip>
         <input #chip_input
                [matChipInputFor]="chipList"
                [matChipInputSeparatorKeyCodes]="separatorKeys"
@@ -20,20 +16,30 @@
     <i *ngIf="!multiple" class="fa fa-search search-icon"></i>
 </mat-form-field>
 
-<mat-form-field *ngIf="type === 'selectObject'">
-    <mat-chip-list #chipList>
-        <mat-chip *ngFor="let option of optionFilters" [selectable]="selectable" [removable]="removable" (remove)="removeOptionFilter(option)">
-            {{ option.name }}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-        </mat-chip>
+<div *ngIf="multiple && type === 'text'">
+    <mat-chip *ngFor="let value of filter.values" [selectable]="selectable" [removable]="removable" (remove)="removeFilter(value)">
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        {{ formatDisplayFilter(value) }}
+    </mat-chip>
+</div>
 
-        <input #chip_input [matAutocomplete]="auto" class="multiple-select mat-select"
-               placeholder="Choisir une option"/>
+<mat-form-field *ngIf="type === 'selectObject'" [id]="display ? 'hide' : 'show'">
+    <mat-label *ngIf="multiple">{{ paramLabel }}</mat-label>
+    <mat-chip-list #chipList *ngIf="multiple">
+        <input #chip_input [matAutocomplete]="auto" class="multiple-select mat-select"/>
 
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addOptionFilter($event.option)">
             <mat-option *ngFor="let option of options" [value]="option">
-                <span>{{ option.name }}</span>
+                <span [matTooltip]="option.name" matTooltipPosition="right">{{ formatDisplayFilter(option.name) }}</span>
             </mat-option>
         </mat-autocomplete>
     </mat-chip-list>
+    <i *ngIf="!multiple" class="fa fa-search search-icon"></i>
 </mat-form-field>
+
+<div *ngIf="multiple && type === 'selectObject'">
+<mat-chip *ngFor="let option of optionFilters" [selectable]="selectable" [removable]="removable" (remove)="removeOptionFilter(option)" [matTooltip]="option.name" matTooltipPosition="below">
+    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    {{ formatDisplayFilter(option.name) }}
+</mat-chip>
+</div>

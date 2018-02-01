@@ -29,6 +29,23 @@
                         font-weight: 700;
                     }
                 }
+                &-filter{
+                    display: flex;
+                }
+                .count-cards{
+                    margin-left: auto;
+                    display: flex;
+                    flex-direction: column;
+                    &#hide{
+                        justify-content: flex-start;
+                    }
+                    &#show{
+                        justify-content: flex-end;
+                    }
+                    div{
+                        margin: 5px 0;
+                    }
+                }
                 &-desc{
                     padding: 10px 20px 10px 20px;
                     flex: 0 0 10%;
