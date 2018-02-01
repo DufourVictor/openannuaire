@@ -30,7 +30,7 @@
 
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addOptionFilter($event.option)">
             <mat-option *ngFor="let option of options" [value]="option">
-                <span matTooltip="{{ option.name }}" matTooltipPosition="right">{{ formatDisplayFilter(option.name) }}</span>
+                <span [matTooltip]="option.name" matTooltipPosition="right">{{ formatDisplayFilter(option.name) }}</span>
             </mat-option>
         </mat-autocomplete>
     </mat-chip-list>
@@ -38,7 +38,7 @@
 </mat-form-field>
 
 <div *ngIf="multiple && type === 'selectObject'">
-<mat-chip *ngFor="let option of optionFilters" [selectable]="selectable" [removable]="removable" (remove)="removeOptionFilter(option)" matTooltip="{{ option.name }}" matTooltipPosition="below">
+<mat-chip *ngFor="let option of optionFilters" [selectable]="selectable" [removable]="removable" (remove)="removeOptionFilter(option)" [matTooltip]="option.name" matTooltipPosition="below">
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     {{ formatDisplayFilter(option.name) }}
 </mat-chip>
