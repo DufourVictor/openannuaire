@@ -16,7 +16,6 @@ export class MapCompaniesComponent implements OnInit {
     styles;
     lat: number;
     lng: number;
-    loaded: boolean = false;
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService, private http: HttpClient) {
     }
