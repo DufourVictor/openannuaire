@@ -19,7 +19,7 @@
 <div *ngIf="multiple && type === 'text'">
     <mat-chip *ngFor="let value of filter.values" [selectable]="selectable" [removable]="removable" (remove)="removeFilter(value)">
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-        {{ value }}
+        {{ formatDisplayFilter(value) }}
     </mat-chip>
 </div>
 
@@ -40,6 +40,6 @@
 <div *ngIf="multiple && type === 'selectObject'">
 <mat-chip *ngFor="let option of optionFilters" [selectable]="selectable" [removable]="removable" (remove)="removeOptionFilter(option)">
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-    {{ option.name }}
+    {{ formatDisplayFilter(option.name) }}
 </mat-chip>
 </div>
