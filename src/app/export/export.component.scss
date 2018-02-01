@@ -3,7 +3,7 @@
 #export{
     overflow: auto;
     height: 100%;
-    &::-webkit-scrollbar, &::-ms- {
+    &::-webkit-scrollbar{
         display: none;
     }
     h1{
