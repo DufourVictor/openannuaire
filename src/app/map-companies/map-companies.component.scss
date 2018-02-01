@@ -1,0 +1,14 @@
+@import '../../sass/variables';
+
+agm-map {
+  height: 100%;
+  overflow: auto;
+}
+
+
+.grey{
+  color: $second-font-color;
+}
+.blue{
+  color: $main-font-color;
+}

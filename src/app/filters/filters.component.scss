@@ -1,0 +1,42 @@
+@import '../../sass/variables';
+
+.mat-form-field {
+    &#hide {
+        display: none;
+    }
+    &#show {
+        display: flex;
+    }
+    input {
+        flex: 0 0 0;
+        &.multiple-select {
+            background: inherit;
+            border: none;
+            color: $first-grey;
+
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+
+
+}
+.ng-star-inserted{
+    .mat-chip {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        width: 100%;
+        max-width: 170px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        &-remove {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+    }
+}
