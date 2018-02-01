@@ -13,6 +13,7 @@ export class RetrieveCompaniesService {
     static DATASET = 'sirene';
     static LANG = 'fr';
     static MAX_ROWS = 10000;
+    static DEFAULT_ROWS = 100;
 
     private url = 'https://public.opendatasoft.com/api/records/1.0/search/';
     companies: Company[] = [];
@@ -94,8 +95,7 @@ export class RetrieveCompaniesService {
             }
             this.rows = rows;
         } else {
-            this.rows = 100;
-            this.rows += this.rows;
+            this.rows += RetrieveCompaniesService.DEFAULT_ROWS;
         }
         this.getCompanies();
     }
