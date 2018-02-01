@@ -10,6 +10,8 @@ import {Extensions} from '../Enums/extensions.enum';
     styleUrls: ['./export.component.scss']
 })
 export class ExportComponent implements OnInit {
+    static MAX_ROWS = 100;
+
     private urlExport = 'https://data.opendatasoft.com/explore/dataset/sirene@public/download/?timezone=Europe/Berlin&use_labels_for_header=true&format=';
     companies: Company[];
     totalCompanies: number;
@@ -60,5 +62,6 @@ export class ExportComponent implements OnInit {
                 this.exportService.exportExcel(this.companies);
                 break;
         }
+        this.retrieveCompaniesService.loadNextCompanies(ExportComponent.MAX_ROWS);
     }
 }

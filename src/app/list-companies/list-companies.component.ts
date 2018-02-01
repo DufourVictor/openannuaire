@@ -17,20 +17,20 @@ export class ListCompaniesComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
-        this.dataSource = new MatTableDataSource<Company>();
-
-        this.retrieveCompaniesService.retrieveCompanies.subscribe((data: Company[]) => {
-            if (this.paginator.length > data.length) {
-                this.paginator.pageIndex = 0;
-            }
-            this.dataSource = new MatTableDataSource<Company>(data);
-            this.dataSource.sort = this.sort;
-            this.dataSource.paginator = this.paginator;
-        });
     }
 
     ngOnInit(): void {
         this.retrieveCompaniesService.getCompanies();
+
+        this.retrieveCompaniesService.retrieveCompanies.subscribe((data: Company[]) => {
+            this.dataSource = new MatTableDataSource<Company>(data);
+            if (this.paginator.length > data.length) {
+                this.paginator.pageIndex = 0;
+            }
+            this.dataSource.data = data;
+            this.dataSource.sort = this.sort;
+            this.dataSource.paginator = this.paginator;
+        });
     }
 
     // Called when page changed in table
